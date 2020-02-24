@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   libft.h                                          .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/15 12:18:44 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/04 22:01:32 by sad-aude    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sad-aude <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/24 15:07:14 by sad-aude          #+#    #+#             */
+/*   Updated: 2020/02/24 16:47:18 by sad-aude         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
@@ -18,7 +17,6 @@
 # include <stdio.h>
 # include <string.h>
 # include <unistd.h>
-# include "get_next_line_bonus.h"
 
 typedef	struct	s_list
 {
@@ -41,6 +39,7 @@ int				ft_isprint(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
 char			*ft_strchr(const char *s, int c);
+int				ft_strichr(char *str, char c);
 char			*ft_strrchr(const char *s, int c);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t			ft_strlcpy(char *dst, const char *src, size_t size);

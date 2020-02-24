@@ -1,76 +1,76 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/04 22:07:10 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/05 05:37:33 by sad-aude    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sad-aude <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/24 16:48:36 by sad-aude          #+#    #+#             */
+/*   Updated: 2020/02/24 16:48:41 by sad-aude         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"    
+#include "../include/ft_printf.h"
 
-int     ft_printf(const char *src, ...)
+/* int     ft_parsing(const char *format, t_spec comp)
 {
-    va_list my_list;
-    char tabindex[4] = {'s', 'c', 'd', 0};
-    void (*tabfunction[3]) (va_list *) = {ft_printf_str, ft_printf_char, ft_printf_nbr};
+    //une fonction generale parsing a decouper en diff parties 
+    //pour gerer chaque cas de ma structure
+    int ret;
     int i;
-    int tmp;
 
     i = 0;
-    tmp = 0; 
-    va_start(my_list, src);
-    while (src[i])
+    while (format[i])
     {
-        if (i != 0 && src[i - 1] == '%')
-            tmp = ft_index(tabindex, src[i]);
-            if (tmp != -1)
-                (*tabfunction[tmp])(&my_list);
-        else if (src[i] != '%')
-            write(1, &src[i], 1);
+        if (i > 0 && format[i] == '%')
+        {
+            if (format[i + 1] == 'c')
+                ret = ft_printf_char(&zob);
+        }
         i++;
     }
-    va_end(my_list);
+    return (ret);
+}
+*/
+
+int     ft_printf(const char *format, ...)
+{
+    va_list       zob;
+    va_start(zob, format);
+    int i;
+
+    i = 0;
+    while (format[i])
+    {
+        if (i > 0 && format[i - 1] == '%')
+            {
+                if (format[i] == 'c')
+                {
+                    ft_printf_char(&zob);
+                }
+            }
+        else
+            write(1, &format[i], 1);
+        i++;
+    }
+    va_end (zob);
     return (0);
 }
 
-int ft_index(char *tab, char element)
-{
-    int ind;
-
-    ind = 0;
-    while (tab[ind])
-    {
-        if (tab[ind] == element)
-            return (ind);
-        ind++;
-    }
-    return (-1);
-}
-void    ft_printf_char(va_list *my_list)
+void    ft_printf_char(va_list *zob)
 {
     char c;
 
-    c = va_arg(*my_list, int);
+    c = va_arg(*zob, int);
     ft_putchar_fd(c, 1);
 }
 
-void    ft_printf_nbr(va_list *my_list)
+int main()
 {
-    int nbr;
+    char d;
 
-    nbr  = va_arg(*my_list, int);
-    ft_putnbr_fd(nbr, 1);
-}
-
-void ft_printf_str(va_list *my_list)
-{
-    char *src;
-
-    src = va_arg(*my_list, char *);
-    ft_putstr_fd(src, 1);
+    d = 'i';
+    ft_printf("My %c essai\n", d);
+    printf("Real[%c] essai", d);
+    return (0);
 }

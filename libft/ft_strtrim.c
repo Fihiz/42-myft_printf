@@ -1,14 +1,13 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   ft_strtrim.c                                     .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/10/24 15:58:52 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2019/12/18 14:23:54 by sad-aude    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sad-aude <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/24 15:03:46 by sad-aude          #+#    #+#             */
+/*   Updated: 2020/02/24 15:03:49 by sad-aude         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
@@ -30,10 +29,4 @@ char		*ft_strtrim(char const *s1, char const *set)
 	while (s1[end] && ft_strchr(set, s1[end]))
 		end--;
 	return (ft_substr(s1, start, end - start + 1));
-}
-
-int		main()
-{
-	printf("%s", ft_strtrim("je suis \n\n\n", "\n"));
-	return (0);
 }

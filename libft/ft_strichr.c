@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strichr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sad-aude <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 15:02:45 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/02/24 15:02:47 by sad-aude         ###   ########lyon.fr   */
+/*   Created: 2020/02/24 15:08:48 by sad-aude          #+#    #+#             */
+/*   Updated: 2020/02/24 15:14:12 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlen(const char *s)
+int		ft_strichr(char *str, char c)
 {
-	size_t	len;
+	int i;
 
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			return (i);
+		i++;
+	}
+	return (-1);
 }
