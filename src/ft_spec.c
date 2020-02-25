@@ -6,17 +6,17 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/25 22:29:58 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 23:24:49 by sad-aude    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/26 00:38:36 by sad-aude    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-
-// fonction qui renvoie la precision
-// si y a pas de prec je renvoie -2
-// si j'ai un point mais pas de precision -1
+/* A CODER :
+fonction qui renvoie la precision
+si y a pas de prec je renvoie -2
+si j'ai un point mais pas de precision -1 */
 
 static int  conv_spec(t_spec *spec)
 {
@@ -32,8 +32,8 @@ int         read_spec(const char *format, int *i)
     int     start;
 
     start = (*i)++;
-    while (!ft_strchr(TYPES, format[*i]))
-        (*i)++;
+    while (!ft_strchr(TYPES, format[*i])) //define de types
+        (*i)++; 
     if (!(spec.conv = ft_substr(format, start + 1, *i - start)) ||
         !conv_spec(&spec))
         return (0);

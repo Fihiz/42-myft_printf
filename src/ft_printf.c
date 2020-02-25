@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/24 16:48:36 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 22:36:44 by sad-aude    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/26 00:38:33 by sad-aude    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,8 +15,8 @@
 
 int     ft_parsing(const char *format)
 {
-    int ret;
-    int i;
+    int ret; //compteur des char
+    int i; //index
     
     i = 0; 
     ret = 0; 
@@ -41,7 +41,7 @@ int     ft_printf(const char *format, ...)
 
     counter = 0;
     va_start(elem, format);
-    if ((counter = ft_parsing(format)) < 0)
+    if ((counter = ft_parsing(format)) < 0) //securise
         return (0);
     va_end (elem);
     return (counter);
