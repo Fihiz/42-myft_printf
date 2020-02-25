@@ -1,24 +1,25 @@
 # **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: sad-aude <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/02/15 17:48:42 by sad-aude          #+#    #+#              #
-#    Updated: 2020/02/15 17:48:46 by sad-aude         ###   ########lyon.fr    #
-#                                                                              #
+#                                                           LE - /             #
+#                                                               /              #
+#    Makefile                                         .::    .:/ .      .::    #
+#                                                  +:+:+   +:    +:  +:+:+     #
+#    By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+      #
+#                                                  #+#   #+    #+    #+#       #
+#    Created: 2020/02/15 17:48:42 by sad-aude     #+#   ##    ##    #+#        #
+#    Updated: 2020/02/25 17:54:19 by sad-aude    ###    #+. /#+    ###.fr      #
+#                                                          /                   #
+#                                                         /                    #
 # **************************************************************************** #
-
-C = gcc
 
 NAME = libftprintf.a
 
 SRCS = src/ft_printf.c
 
-FLAGS = -Wall -Wextra -Werror -I include/
-
 OBJ = $(SRCS:.c=.o)
+
+C = gcc
+
+FLAGS = -Wall -Wextra -Werror -I include/
 
 LIB = libft/libft.a
 
