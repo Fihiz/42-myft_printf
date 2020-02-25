@@ -1,0 +1,60 @@
+Mardi : * Commencement de printf.
+        * Création du Makefile.
+        * Fondation de la fonction printf, bonne base pour la suite.
+Dans la fonction printf il y a une boucle qui lit la chaine de caractère.
+Tant que le caractère '%' n'est pas rencontré, écrire ce dernier dans la sortie
+standard. Lorsqu'un '%' est rencontré, accéder au parsing. Dans le parsing
+regarder de quel spécifieur il s'agit. Une fois le spécifieur détecté, accéder
+a la fonction qui récupère l'argument et affiche ce qu'il doit être transformé.
+
+Tant que string existe
+{
+    si string[i] == '%'
+        i++;
+        parsing
+    else
+        write(1, string[i], 1);
+        i++;
+        compteur de lettre + 1
+}
+
+parsing
+{
+    si string[i] == 'c'
+        accéder à ma fonction qui récupère l'argument.
+    si string[i] == '...'
+        accéder à ma fonction qui récup l'argument ...
+
+...
+}
+
+fonction qui récupère l'argument 'c'
+{
+    je récupère l'argument = va_arg(ap, int);
+    j'augmente mon i de 1;
+    j'affiche le contenu de "je récupère l'argument".
+    j'augmente mon compteur de lettre de 1.
+}
+
+mon code est propre structuré et organisé.
+
+Objectif :
+
+- Mercredi  : * Implémenter un autre spécifieur. Disons : %
+- Jeudi     : * Implémenter : s
+- Vendredi  : * Implémenter : p
+- Samedi    : * Implémenter : di
+- Dimanche  : * Implémenter : u
+
+- Lundi     : * Implémenter : xX
+- Mardi     : * Implémenter : .précision
+- Mercredi  : * Implémenter : largeur
+- Jeudi     : * Implémenter : * / 0 / -
+- Vendredi  : * Gestion des cas particuliers.
+
+Semaine suivante : Peaufiner printf.
+
+Mon projet doit avoir au minimum 1 push par jour.
+
+Liens utiles :  google -> limits.h microsoft
+                google -> printf cplusplus
