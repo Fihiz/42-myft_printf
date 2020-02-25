@@ -1,0 +1,49 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile_test                                      :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ksam <marvin@42.fr>                        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/02/25 17:26:03 by ksam              #+#    #+#              #
+#    Updated: 2020/02/25 17:31:33 by ksam             ###   ########lyon.fr    #
+#                                                                              #
+# **************************************************************************** #
+
+NAME		= ft_printf.a
+
+HEADER		= include/ft_printf.h
+
+LIB			= libft.a
+
+LIBDIR		= libft/libft.a
+
+SRCS		= src/*.c
+
+OBJS		= $(SRCS:.c=o)
+
+RM			= rm -rm
+
+CFLAGS		= -Wall -Wextra -Werror -g3 -Iinclude -Ilibft
+
+all			: $(LIB) $(NAME)
+
+$(NAME)		: $(OBJS) $(HEADER)
+			cp libft/libft.a ./$(NAME)
+			cp ft_printf/ft_printf.a/$(NAME)
+			ar rc $(NAME) $(OBJS)
+
+$(LIB)		:
+			$(MAKE) -C libft all
+
+clean		:
+			@$(MAKE) -C libft clean
+			@$(RM) $(OBJS)
+
+fclean      : clean
+			@$(MAKE) -C libft fclean
+			@$(RM) $(NAME)
+
+re          : fclean all
+
+.PHONY      : clean fclean all re
