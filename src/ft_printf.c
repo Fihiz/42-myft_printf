@@ -1,76 +1,48 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sad-aude <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/24 16:48:36 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/02/24 16:48:41 by sad-aude         ###   ########lyon.fr   */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2020/02/24 16:48:36 by sad-aude     #+#   ##    ##    #+#       */
+/*   Updated: 2020/02/25 22:36:44 by sad-aude    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-/* int     ft_parsing(const char *format, t_spec comp)
+int     ft_parsing(const char *format)
 {
-    //une fonction generale parsing a decouper en diff parties 
-    //pour gerer chaque cas de ma structure
     int ret;
     int i;
-
-    i = 0;
+    
+    i = 0; 
+    ret = 0; 
     while (format[i])
     {
-        if (i > 0 && format[i] == '%')
+        if (format[i] == '%')
+            ret += read_spec(format, &i);
+        else
         {
-            if (format[i + 1] == 'c')
-                ret = ft_printf_char(&zob);
+            write(1, &format[i], 1);
+            ret++;
         }
         i++;
     }
     return (ret);
 }
-*/
 
 int     ft_printf(const char *format, ...)
 {
-    va_list       zob;
-    va_start(zob, format);
-    int i;
+    va_list elem;
+    int     counter;
 
-    i = 0;
-    while (format[i])
-    {
-        if (i > 0 && format[i - 1] == '%')
-            {
-                if (format[i] == 'c')
-                {
-                    ft_printf_char(&zob);
-                }
-            }
-        else
-            write(1, &format[i], 1);
-        i++;
-    }
-    va_end (zob);
-    return (0);
-}
-
-void    ft_printf_char(va_list *zob)
-{
-    char c;
-
-    c = va_arg(*zob, int);
-    ft_putchar_fd(c, 1);
-}
-
-int main()
-{
-    char d;
-
-    d = 'i';
-    ft_printf("My %c essai\n", d);
-    printf("Real[%c] essai", d);
-    return (0);
+    counter = 0;
+    va_start(elem, format);
+    if ((counter = ft_parsing(format)) < 0)
+        return (0);
+    va_end (elem);
+    return (counter);
 }
