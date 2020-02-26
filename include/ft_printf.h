@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/24 16:52:34 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/25 23:17:22 by sad-aude    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/26 14:07:33 by sad-aude    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -35,6 +35,7 @@ typedef struct	s_convs
 int						ft_printf(const char *format, ...)
 						 __attribute__((format(printf,1,2)));
 int	read_spec(const char *format, int *i);
+
 
 // printf("%", 2, "test");
 
