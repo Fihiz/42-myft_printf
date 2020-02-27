@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/24 16:48:36 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/26 19:57:39 by sad-aude    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 15:16:51 by sad-aude    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -37,12 +37,11 @@ int     ft_parsing(const char *format)
 int     ft_printf(const char *format, ...)
 {
     va_list elem;
-    int     counter; //compteur de renvoi pour printf
-
+    int     counter;
     counter = 0;
-    va_start(elem, format); //je pointe sur ma chaine
-    if ((counter = ft_parsing(format)) < 0) //securise si je n'ai rien a "lire"
+    va_start(elem, format);
+    if ((counter = ft_parsing(format)) < 0)
         return (0);
-    va_end (elem); //fin des arguments
-    return (counter); //valeur de renvoi de printf
+    va_end (elem); 
+    return (counter); 
 }

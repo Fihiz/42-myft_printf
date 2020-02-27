@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/15 18:53:09 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/26 20:01:34 by sad-aude    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 22:34:12 by sad-aude    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,8 +15,10 @@
 
 int     main()
 {
-    ft_printf("%15.s salut\n", "01234567890");
-    printf("%.d\n", 0);
+    //char *str = "hello world";
+    //ft_printf("%15.s salut\n", "01234567890");
+    //ft_printf("%15.d salut\n", 1);
+    printf("Bonjour%d.\n", 15);
     return (0);
 }
 

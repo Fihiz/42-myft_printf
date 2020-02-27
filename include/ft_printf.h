@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/24 16:52:34 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/26 14:07:33 by sad-aude    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/02/27 22:34:15 by sad-aude    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,7 +20,7 @@
 
 typedef struct	s_convs
 {
-	char		*conv;
+	char		*conv; //ma chaine de choses a convertir
 	int			count;
 	char		type;
 	
