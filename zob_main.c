@@ -27,7 +27,7 @@ int main()
     char d;
 
     d = 'i';
-    ft_printf("My %c essai\n", d);
-    printf("Real[%c] essai", d);
+    printf("vdv %11d\n", 10);
+    //printf("Real[%c] essai", d);
     return (0);
 }

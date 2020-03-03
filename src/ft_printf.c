@@ -23,7 +23,7 @@ int     ft_parsing(const char *format)
     while (format[i])
     {
         if (format[i] == '%')
-            ret += read_spec(format, &i); 
+            ret += read_spec(format, &i);
         else
         {
             write(1, &format[i], 1);
@@ -38,6 +38,7 @@ int     ft_printf(const char *format, ...)
 {
     va_list elem;
     int     counter;
+
     counter = 0;
     va_start(elem, format);
     if ((counter = ft_parsing(format)) < 0)

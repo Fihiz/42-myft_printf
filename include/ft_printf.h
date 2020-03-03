@@ -23,7 +23,9 @@ typedef struct	s_spec
 	char		*conv;
 	int			count;
 	char		type;
-
+	int			is_star;
+	int			is_minus;
+	int			is_zero;
 	
 	int 		width;
 	int 		prec;
