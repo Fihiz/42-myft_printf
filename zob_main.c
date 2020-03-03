@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/15 18:53:09 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/02 22:30:31 by sad-aude    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/03 22:00:29 by sad-aude    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -27,7 +27,7 @@ int main()
     char d;
 
     d = 'i';
-    printf("vdv %11d\n", 10);
+    ft_printf("vdv %11d\n", 10);
     //printf("Real[%c] essai", d);
     return (0);
 }
