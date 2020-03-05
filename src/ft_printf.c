@@ -1,18 +1,18 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   ft_printf.c                                      .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/03/03 19:35:55 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/03 22:00:32 by sad-aude    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
+/*   Updated: 2020/03/04 16:23:29 by sad-aude         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/ft_printf.h"
 
-int		ft_parsing(const char *format)
+int		ft_parsing(va_list elem, const char *format)
 {
 	int	ret;
 	int	i;
@@ -22,7 +22,7 @@ int		ft_parsing(const char *format)
 	while (format[i])
 	{
 		if (format[i] == '%')
-			ret += read_spec(format, &i);
+			ret += read_spec(elem, format, &i);
 		else
 		{
 			write(1, &format[i], 1);
@@ -40,7 +40,7 @@ int		ft_printf(const char *format, ...)
 
 	counter = 0;
 	va_start(elem, format);
-	if ((counter = ft_parsing(format)) < 0)
+	if ((counter = ft_parsing(elem, format)) < 0)
 		return (0);
 	va_end(elem);
 	return (counter);

@@ -36,8 +36,8 @@ typedef struct	s_spec
 
 int						ft_printf(const char *format, ...)
 						 __attribute__((format(printf,1,2)));
-int     ft_parsing(const char *format);
-int	read_spec(const char *format, int *i);
+int     ft_parsing(va_list elem, const char *format);
+int	read_spec(va_list elem, const char *format, int *i);
 void ft_convert_char(va_list *elem);
 
 
