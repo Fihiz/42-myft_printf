@@ -1,15 +1,15 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/04 16:23:24 by sad-aude         ###   ########lyon.fr   */
-/*                                                                            */
+/*                                                          LE - /            */
+/*                                                              /             */
+/*   ft_printf.c                                      .::    .:/ .      .::   */
+/*                                                 +:+:+   +:    +:  +:+:+    */
+/*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*                                                 #+#   #+    #+    #+#      */
+/*   Created: 2020/03/03 19:35:55 by sad-aude     #+#   ##    ##    #+#       */
+/*   Updated: 2020/03/08 21:34:28 by sad-aude    ###    #+. /#+    ###.fr     */
+/*                                                         /                  */
+/*                                                        /                   */
 /* ************************************************************************** */
-
 #include "../include/ft_printf.h"
 
 int		ft_parsing(va_list elem, const char *format)
@@ -30,6 +30,7 @@ int		ft_parsing(va_list elem, const char *format)
 		}
 		i++;
 	}
+	//printf("Valeur de ret : [%d]\n", ret);
 	return (ret);
 }
 
