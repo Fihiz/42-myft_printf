@@ -6,19 +6,19 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/03/03 19:36:09 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/09 00:34:34 by sad-aude    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/09 01:17:25 by sad-aude    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 #include "../include/ft_printf.h"
 
-// void    ft_convert_char(va_list elem, t_spec spec)
-// {
-//     char c;
+void    ft_convert_char(va_list elem/* ,t_spec spec*/)
+{
+    char c;
 
-//     c = va_arg(elem, int);
-//     ft_putchar_fd(c, 1);
-// }
+    c = va_arg(elem, int);
+    ft_putchar_fd(c, 1);
+}
 
 void    ft_convert_str(va_list elem, t_spec spec)
 {
