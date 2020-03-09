@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/02/15 18:53:09 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/09 00:41:58 by sad-aude    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/09 01:38:35 by sad-aude    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -21,14 +21,16 @@ int     main()
     ft_printf("Mon essai chaine avec width : [%s] salut\n", "lol");
     ft_printf("Mon essai chaine avec width : [%-24s] salut\n", "lol");
     ft_printf("Mon essai chaine avec width : [%24s] salut\n", "lol");
-    ft_printf("Mon essai chaine avec width : [%-2s] salut\n", "lol");
+    ft_printf("Mon essai chaine avec width : [%.2s] salut\n", "lol");
     ft_printf("Mon essai chaine avec width : [%.15s] salut\n", "lol");
+    ft_printf("Mon essai chaine avec width : [%.15s] salut\n", NULL);
     printf("---------------------\n");
-    printf("Mon essai chaine avec width : [%s] salut\n", "lol");
-    printf("Mon essai chaine avec width : [%-24s] salut\n", "lol");
-    printf("Mon essai chaine avec width : [%24s] salut\n", "lol");
-    printf("Mon essai chaine avec width : [%-2s] salut\n", "lol");
-    printf("Mon essai avec precision : [%*s] salut\n", 10, "lol");
+    printf("Son essai chaine avec width : [%s] salut\n", "lol");
+    printf("Son essai chaine avec width : [%-24s] salut\n", "lol");
+    printf("Son essai chaine avec width : [%24s] salut\n", "lol");
+    printf("Son essai chaine avec width : [%.2s] salut\n", "lol");
+    printf("Son essai avec precision : [%*s] salut\n", 10, "lol");
+    printf("Son essai chaine avec width : [%.15s] salut\n", NULL);
     //printf("'%-3s'", "basique");
     //printf("'%*.*s'", 3, 3, "basique");
     //printf("Bonjour %d*.15 \n", 10);

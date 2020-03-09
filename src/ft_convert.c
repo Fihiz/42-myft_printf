@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2020/03/03 19:36:09 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/09 01:17:25 by sad-aude    ###    #+. /#+    ###.fr     */
+/*   Updated: 2020/03/09 01:23:54 by sad-aude    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -29,6 +29,8 @@ void    ft_convert_str(va_list elem, t_spec spec)
     len = 0;
     diff = 0;
     str = va_arg(elem, char*);
+    if (!str)
+        str = "(null)";
     if (spec.width > 0)
     {
         len = ft_strlen(str);
