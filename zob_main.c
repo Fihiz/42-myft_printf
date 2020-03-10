@@ -1,15 +1,15 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   zob_main.c                                       .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/15 18:53:09 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/09 01:38:35 by sad-aude    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   zob_main.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/15 18:53:09 by sad-aude          #+#    #+#             */
+/*   Updated: 2020/03/10 04:36:58 by sad-aude         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
+
 #include "include/ft_printf.h" 
 
 int     main()
@@ -18,19 +18,31 @@ int     main()
     //ft_printf("%15.s salut\n", "01234567890");
     // ft_printf("Mon essai char : [%c]\n", 's');
     // ft_printf("Mon essai chaine : [%s]\n", "A priori...");
-    ft_printf("Mon essai chaine avec width : [%s] salut\n", "lol");
-    ft_printf("Mon essai chaine avec width : [%-24s] salut\n", "lol");
-    ft_printf("Mon essai chaine avec width : [%24s] salut\n", "lol");
-    ft_printf("Mon essai chaine avec width : [%.2s] salut\n", "lol");
-    ft_printf("Mon essai chaine avec width : [%.15s] salut\n", "lol");
-    ft_printf("Mon essai chaine avec width : [%.15s] salut\n", NULL);
-    printf("---------------------\n");
-    printf("Son essai chaine avec width : [%s] salut\n", "lol");
-    printf("Son essai chaine avec width : [%-24s] salut\n", "lol");
-    printf("Son essai chaine avec width : [%24s] salut\n", "lol");
-    printf("Son essai chaine avec width : [%.2s] salut\n", "lol");
-    printf("Son essai avec precision : [%*s] salut\n", 10, "lol");
-    printf("Son essai chaine avec width : [%.15s] salut\n", NULL);
+    
+    // printf("vrai = %10.0s\n", "SALUT MEC");
+    // ft_printf("faux = %10.s\n", "SALUT MEC");
+
+    printf("Le vrai :[%10.5s]\n", "12345678925262515615625614");
+    // printf("Le vrai :[%8.0s]\n", "hello world");
+    // ft_printf("Le faux :[%15.5s]\n", "hello world");
+    ft_printf("Le faux :[%15.5s]\n", "12345678925262515615625614");
+
+
+    // ft_printf("Mon essai chaine avec width : [%s] salut\n", "lol");
+    // ft_printf("Mon essai chaine avec width : [%-24s] salut\n", "lol");
+    // ft_printf("Mon essai chaine avec width : [%24s] salut\n", "lol");
+    // ft_printf("Mon essai chaine avec width : [%.2s] salut\n", "lol");
+    // ft_printf("Mon essai chaine avec width : [%.15s] salut\n", "lol");
+    // ft_printf("Mon essai chaine avec width : [%.15s] salut\n", NULL);
+    // printf("---------------------\n");
+    // printf("Son essai chaine avec width : [%s] salut\n", "lol");
+    // printf("Son essai chaine avec width : [%-24s] salut\n", "lol");
+    // printf("Son essai chaine avec width : [%24s] salut\n", "lol");
+    // printf("Son essai chaine avec width : [%.2s] salut\n", "lol");
+    // printf("Son essai avec precision : [%*s] salut\n", 10, "lol");
+    // printf("Son essai chaine avec width : [%.15s] salut\n", NULL);
+   
+   
     //printf("'%-3s'", "basique");
     //printf("'%*.*s'", 3, 3, "basique");
     //printf("Bonjour %d*.15 \n", 10);

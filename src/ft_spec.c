@@ -1,15 +1,15 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   ft_spec.c                                        .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: sad-aude <sad-aude@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/03/03 19:50:00 by sad-aude     #+#   ##    ##    #+#       */
-/*   Updated: 2020/03/09 01:17:35 by sad-aude    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_spec.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
+/*   Updated: 2020/03/10 03:50:19 by sad-aude         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
+
 #include "../include/ft_printf.h"
 
 static	int		get_prec(char *conv)
@@ -22,7 +22,8 @@ static	int		get_prec(char *conv)
 	if (conv[index] == '.' && conv[index + 1] &&
 			ft_isdigit(conv[index + 1]))
 		return (ft_atoi(conv + index + 1));
-	else if (conv[index] == '.' && !ft_isdigit(conv[index + 1]))
+	else if (conv[index] == '.' &&
+		!ft_isdigit(conv[index + 1]))
 		return (-1);
 	return (0);
 }
@@ -36,8 +37,8 @@ static	int		get_width(va_list elem, t_spec *spec)
 	{
 		while (spec->conv[index] && !ft_isdigit(spec->conv[index]))
 			index++;
-		if (ft_isdigit(spec->conv[index]) &&
-			spec->conv[index - 1] != '.')
+		if (ft_isdigit(spec->conv[index]) && (index - 1 < 0 ||
+			spec->conv[index - 1] != '.'))
 			return (ft_atoi(spec->conv + index));
 	}
 	else
@@ -50,6 +51,8 @@ static	void	parsing_flags(t_spec *spec)
 	int index;
 
 	index = 0;
+	if (ft_strchr(spec->conv, '.'))
+		spec->is_prec = 1;
 	if (ft_strchr(spec->conv, '*'))
 		spec->is_star = 1;
 	if (ft_strchr(spec->conv, '-'))
@@ -88,7 +91,7 @@ int		read_spec(va_list elem, const char *format, int *i)
 		if (format[*i] == 'c')
 			ft_convert_char(elem/*, spec*/);
 		if (format[*i] == 's')
-			ft_convert_str(elem, spec);
+			ft_convert_str(elem, &spec);
 		else
 			printf("FAIL SO END\n");
 	}
