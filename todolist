@@ -58,3 +58,55 @@ Mon projet doit avoir au minimum 1 push par jour.
 
 Liens utiles :  google -> limits.h microsoft
                 google -> printf cplusplus
+
+
+
+
+
+------------------------------------------------------------------
+
+TYPES : cspdiuxX%
+
+FLAGS : -0.*
+
+LA PRECISION AGIT SUR LES CARACTERES / CHIFFRES A PRINT
+LA WIDTH AGIT SUR LA TAILLE DE CHAMP 
+(Ex : %15.2s", "lolo" => '              lo'%
+
+Cas générique de la width : 
+Minimum de caractères a print, si la valeur de width est superieure a la len de ce que j'ai a print, je comble le reste par des espaces (a droite par défaut, a gauche si j'ai la presence d'un moins -> le flag - n'agit qu'avec la width, si - tout seul, je ne print pas + le - n'agit pas si champ < strlen de ce que j'ai a print)
+(Ex : ("%-10.30d\n", 123456789) => 000000000000000000000123456789)
+("%-30.30s\n", "123456789") => 123456789                     $
+("%5.d\n", 123456789) => 123456789$
+
+Cas générique de la précision :
+Pour d, i, u, x, X precise le minimum de chiffres a écrire 
+Si le nombre de chiffres a print est plus petit que precision, on complete de zero DEVANT
+(Ex : ("%.15d", 1234) => 000000000001234)
+Si la precision est plus petite, on ne tronque pas la valeur a print
+(Ex : ("%.2d", 1234) => 1234)
+Si precision de .0, alors 0 devant n'est pas print pour le cas 0
+(ex : 0, 01... != 105 sera print 105)
+
+Pour s, precise le maximum de caractères a print
+Si precision < strlen(str)
+	cut jusqu'a [atoi de precision] premiers octets
+Autrement elle n'influe pas ma valeur a print
+
+Cas générique de l'étoile : récupère dans l'ordre dans les arguments
+
+
+Pour le char :
+Width existante donc - aussi, pas de precision
+
+TO DO :
+
+Nouvelle structure avec mes variables outils
+Check de ma structure avec variables inutiles
+
+Finir l'implementation de C avec width et flag -
+'\0'
+
+Cas de rencontre precision et width
+Implementation de la precision pour s avant de gérer la width
+Passage de spec sur convert char et precision

@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/10 03:50:19 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 21:06:10 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,11 @@ int		read_spec(va_list elem, const char *format, int *i)
 	if (ft_strchr(TYPES, format[*i]))
 	{
 		if (format[*i] == 'c')
-			ft_convert_char(elem/*, spec*/);
+			ft_convert_char(elem, &spec);
 		if (format[*i] == 's')
 			ft_convert_str(elem, &spec);
-		else
-			printf("FAIL SO END\n");
+		// else
+		// 	printf("FAIL SO END\n");
 	}
 	return (spec.count);
 }
