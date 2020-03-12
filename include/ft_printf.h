@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:52:34 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/11 21:06:12 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 17:07:45 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ typedef struct	s_spec
 	int			is_prec;
 	int 		width;
 	int 		prec;
-	int 		align;
-	int 		strlen;
+	int 		len;
 	void 		*arg;
 } 				t_spec;
 

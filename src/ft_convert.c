@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:36:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/11 21:06:07 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 17:07:16 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,22 @@ void            ft_convert_char(va_list elem, t_spec *spec)
     c = va_arg(elem, int);
     if (spec->width)
     {
-        
+        if (spec->is_minus)
+        {
+            ft_putchar_fd(c, 1);
+            while (++spec->len < spec->width)
+                write(1, " ", 1);
+        }
+        if (!spec->is_minus)
+        {
+            while (++spec->len < spec->width)
+                write(1, " ", 1);
+            ft_putchar_fd(c, 1);
+        }
+        //cas zero ?
     }
-    ft_putchar_fd(c, 1);
+    else
+        ft_putchar_fd(c, 1);
 }
 
 void            ft_convert_str(va_list elem, t_spec *spec)
@@ -74,12 +87,12 @@ void            ft_convert_str(va_list elem, t_spec *spec)
     //prec_str;
     if (spec->width)
     {
-        spec->strlen = ft_strlen(str);
-        if (spec->width > spec->strlen)
+        spec->len = ft_strlen(str);
+        if (spec->width > spec->len)
         {
             if (spec->is_minus)
                 ft_putstr_fd(str, 1);
-            while (diff++ < spec->width - spec->strlen)
+            while (diff++ < spec->width - spec->len)
                 write(1, " ", 1);
             if (!spec->is_minus)
                 ft_putstr_fd(str, 1);

@@ -63,7 +63,39 @@ Liens utiles :  google -> limits.h microsoft
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 TYPES : cspdiuxX%
 
@@ -101,11 +133,9 @@ Width existante donc - aussi, pas de precision
 
 TO DO :
 
-Nouvelle structure avec mes variables outils
 Check de ma structure avec variables inutiles
 
-Finir l'implementation de C avec width et flag -
-'\0'
+Finir l'implementation de C avec width et flag - et cas 0 => OK  
 
 Cas de rencontre precision et width
 Implementation de la precision pour s avant de gérer la width

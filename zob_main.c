@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:53:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/11 21:06:10 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 17:08:18 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int     main()
 {
-    printf("lol : %c\n", '\0');
+    //printf("lol : %c\n", '\0');
     // printf("Precision de zero sur type d, i : %-10.30d\n", 123456789);
     // printf("Precision de zero sur type d, i : %.30s\n", "123456789");
     // printf("Precision de zero sur type d, i : %*.*d\n", 10, 15, 123456789);
@@ -45,10 +45,10 @@ int     main()
     // printf("Son essai chaine avec width : [%.15s] salut\n", NULL);
     // ft_printf("Ma fonction : hello %10c\n", 'i');
     // printf("Le printf : hello %10c\n", 'i');
-    ft_printf("Ma fonction : hello %-20.3s\n", "my name is Sam");
-    printf("Le printf : hello %20.3s\n", "my name is Sam");
-    printf("%-15c, %c, %c, %c\n", 'm', 'a', 'e', 'l');
-    ft_printf("%-15c, %c, %c, %c\n", 'm', 'a', 'e', 'l');
+    //ft_printf("Ma fonction : hello %-20.3s\n", "my name is Sam");
+    //printf("Le printf : hello %20.3s\n", "my name is Sam");
+    printf("vrai : %15c, %-c, %-c, %c\n", 'm', 'a', 'e', 'l');
+    ft_printf("faux : %15c, %-c, %-c, %c\n", 'm', 'a', 'e', 'l');
     //printf("'%*.*s'", 3, 3, "basique");
     //printf("Bonjour %d*.15 \n", 10);
     //printf(" %*s\n %*s\n", -10, "lol", 10, "mdr");
