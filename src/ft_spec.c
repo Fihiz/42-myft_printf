@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/12 17:06:58 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 21:59:05 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static	int		get_prec(char *conv)
 	if (conv[index] == '.' && conv[index + 1] &&
 			ft_isdigit(conv[index + 1]))
 		return (ft_atoi(conv + index + 1));
-	else if (conv[index] == '.' &&
-		!ft_isdigit(conv[index + 1]))
-		return (-1);
+	// else if (conv[index] == '.' &&
+	// 	!ft_isdigit(conv[index + 1]))
+	// 	return (-1);
 	return (0);
 }
 

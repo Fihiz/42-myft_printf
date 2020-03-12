@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:36:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/12 17:07:16 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/12 22:00:32 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,11 @@
 //     }
 // }
 
-// static void prec_str(t_spec *spec)
-// {
-//     char *precstr;
 
-//     precstr = NULL;
-//     if (spec->is_prec)
-//     {
-//         if (spec->prec < ft_strlen(str))
-//             precstr = ft_substr(str, 0, spec->prec);
-//         if (spec->width > spec->prec)
-//         {
-//             //je print space a g ou d
-//         }
-//         else
-//         {
-//             ft_putstr_fd(precstr, 1);
-//         }
-
-//     }
-// }
+void    get_precfor_str()
+{
+        ft_substr(str, 0, spec->prec);
+}
 
 void            ft_convert_char(va_list elem, t_spec *spec)
 {
@@ -69,7 +54,6 @@ void            ft_convert_char(va_list elem, t_spec *spec)
                 write(1, " ", 1);
             ft_putchar_fd(c, 1);
         }
-        //cas zero ?
     }
     else
         ft_putchar_fd(c, 1);
@@ -83,8 +67,8 @@ void            ft_convert_str(va_list elem, t_spec *spec)
     diff = 0;
     if (!(str = va_arg(elem, char*)))
         str = "(null)";
-    //precision d'abord pour avoir la chaine sur laquelle VRAIMENT agir
-    //prec_str;
+    if(spec->is_prec && (size_t)spec->is_prec < ft_strlen(str))
+        str = get_precfor_str();
     if (spec->width)
     {
         spec->len = ft_strlen(str);
