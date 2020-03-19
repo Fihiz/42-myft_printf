@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:53:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/12 21:53:28 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/20 00:01:41 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 int     main()
 {
+    int fuck;
+
+    fuck = 0;
+    //printf("vrai num : %d\n", 123);
+    //ft_printf("faux num : %d\n", 123);
     // printf("Precision de zero sur type d, i : %-10.30d\n", 123456789);
     // printf("Precision de zero sur type d, i : %.30s\n", "123456789");
     // printf("Precision de zero sur type d, i : %*.*d\n", 10, 15, 123456789);
@@ -23,8 +28,8 @@ int     main()
     // ft_printf("Mon essai char : [%c]\n", 's');
     // ft_printf("Mon essai chaine : [%s]\n", "A priori...");
     
-    printf("vrai = %10.s\n", "SALUT MEC");
-    ft_printf("faux = %10.s\n", "SALUT MEC");
+    printf("vrai = %*.*s\n", 35, 45, "SALUT MEC");
+    ft_printf("faux = %*.*s\n", 35, 45, "SALUT MEC");
 
     //printf("Le vrai :[%10.5s]\n", "12345678925262515615625614");
     // printf("Le vrai :[%8.0s]\n", "hello world");

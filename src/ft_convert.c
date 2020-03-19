@@ -6,33 +6,16 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:36:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/12 22:00:32 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/18 20:25:28 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-// static void     check_prec_str(t_spec *spec, char **astr)
-// {
-//     char *str;
-
-//     str = *astr;
-//     //printf("IS_PREC[%d] PREC[%d]\n", spec->is_prec, spec->prec);
-//     if (spec->is_prec)
-//     {
-//         if (spec->prec == -1)
-//             spec->prec = 0;
-//         if (spec->prec != 0)
-//             str = ft_substr(str, 0, spec->prec);
-//         else
-//             str = ft_strdup("");
-//     }
-// }
-
-
-void    get_precfor_str()
+char   *get_prec_str(char *str, t_spec *spec)
 {
-        ft_substr(str, 0, spec->prec);
+        return (ft_substr(str, 0, spec->prec));
+
 }
 
 void            ft_convert_char(va_list elem, t_spec *spec)
@@ -67,8 +50,8 @@ void            ft_convert_str(va_list elem, t_spec *spec)
     diff = 0;
     if (!(str = va_arg(elem, char*)))
         str = "(null)";
-    if(spec->is_prec && (size_t)spec->is_prec < ft_strlen(str))
-        str = get_precfor_str();
+    if (spec->is_prec && (size_t)spec->is_prec < ft_strlen(str))
+        str = get_prec_str(str, spec);
     if (spec->width)
     {
         spec->len = ft_strlen(str);
