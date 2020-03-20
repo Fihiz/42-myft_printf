@@ -139,6 +139,8 @@ Finir l'implementation de C avec width et flag - et cas 0 => OK
 
 Cas de rencontre precision et width
 Implementation de la precision pour s avant de gérer la width => OK
-Implementation du cas 0 width pour S
+Implementation du cas 0 width pour S + d et i pour gerer precision
 Implementation du flag * => OK
+Implementation de la width pour d et i => OK
+Implementation de la precision pour d et i 
 Passage de spec sur convert char et precision

@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:52:34 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/12 17:07:45 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/20 16:31:57 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ int     ft_parsing(va_list elem, const char *format);
 int	read_spec(va_list elem, const char *format, int *i);
 void ft_convert_char(va_list elem, t_spec *spec);
 void ft_convert_str(va_list elem, t_spec *spec);
+void ft_convert_dec(va_list elem, t_spec *spec);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sad-aude <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:57:59 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/02/24 14:58:05 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/20 17:06:28 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,11 @@ char			*ft_itoa(int n)
 	n = (long int)n;
 	ft_putnbr(dest, n);
 	return (dest);
+}
+
+int		main()
+{
+	printf("%s", ft_itoa(-2147483648));
+	printf("lol");
+	return (0);
 }

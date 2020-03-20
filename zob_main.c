@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:53:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/20 00:01:41 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/20 17:15:57 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,16 @@ int     main()
     // ft_printf("Mon essai char : [%c]\n", 's');
     // ft_printf("Mon essai chaine : [%s]\n", "A priori...");
     
-    printf("vrai = %*.*s\n", 35, 45, "SALUT MEC");
-    ft_printf("faux = %*.*s\n", 35, 45, "SALUT MEC");
+    //printf("vrai = %*.*s\n", 35, 45, "SALUT MEC");
+    //ft_printf("faux = %*.*s\n", 35, 45, "SALUT MEC");
+
+    dprintf(1, "vrai = %15.20d\n", -2147483648);
+    ft_printf("faux = %15.20d\n", -2147483648);
+    dprintf(1, "\n");
+    dprintf(1, "\n");
+    dprintf(1, "\n");
+    dprintf(1, "vrai = %-15.d\n", 2147483647);
+    ft_printf("faux = %-15.d\n", 2147483647);
 
     //printf("Le vrai :[%10.5s]\n", "12345678925262515615625614");
     // printf("Le vrai :[%8.0s]\n", "hello world");

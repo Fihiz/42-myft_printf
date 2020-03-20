@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/19 23:55:44 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/20 16:31:44 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ static	int		get_prec(va_list elem, t_spec *spec)
 	}
 	else
 		return (va_arg(elem, int));
-	// else if (conv[index] == '.' &&
-	// 	!ft_isdigit(conv[index + 1]))
-	// 	return (-1);
 	return (0);
 }
 
@@ -97,10 +94,10 @@ int		read_spec(va_list elem, const char *format, int *i)
 			ft_convert_char(elem, &spec);
 		if (format[*i] == 's')
 			ft_convert_str(elem, &spec);
-		//if (format[*i] == 'i')
-		//	ft_convert_int(elem, &spec);
-		// else
-		// 	printf("FAIL SO END\n");
+		if (format[*i] == 'i' || format[*i] == 'd')
+			ft_convert_dec(elem, &spec);
+		else
+		 	printf("FAILURE HAPPENS\n");
 	}
 	return (spec.count);
 }
