@@ -133,14 +133,25 @@ Width existante donc - aussi, pas de precision
 
 TO DO :
 
-Check de ma structure avec variables inutiles
+Check de ma structure avec variables inutiles => seems OK
 
 Finir l'implementation de C avec width et flag - et cas 0 => OK  
 
-Cas de rencontre precision et width
+Cas de rencontre precision et width => si precision plus grande que width ?
 Implementation de la precision pour s avant de gérer la width => OK
+
 Implementation du cas 0 width pour S + d et i pour gerer precision
+
 Implementation du flag * => OK
+
 Implementation de la width pour d et i => OK
+
+Implementation du cas 0+width pour d et i => OK
+Precision plus grande que caracteres à print et donc print des 0 = autre cas
+a gérer soit...
 Implementation de la precision pour d et i 
-Passage de spec sur convert char et precision
+
+Passage de spec sur convert char et precision 
+
+Fonction generale pour is_zero avec dedans "si je traite tel type"  et return
+ft_is_zero dans chaque cas ou j'en ai besoin ? Ou bouts de scotch

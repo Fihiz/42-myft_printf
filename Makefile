@@ -6,7 +6,7 @@
 #    By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/15 17:48:42 by sad-aude          #+#    #+#              #
-#    Updated: 2020/03/20 16:04:24 by sad-aude         ###   ########lyon.fr    #
+#    Updated: 2020/03/23 18:56:59 by sad-aude         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ NAME = libftprintf.a
 
 SRCS = src/ft_printf.c \
 		src/ft_spec.c \
-		src/ft_convert.c \
+		src/ft_convert_characters.c \
 		src/ft_convert_int.c \
 
 OBJ = $(SRCS:.c=.o)
