@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/18 19:03:31 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/28 02:03:07 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ int		ft_parsing(va_list elem, const char *format)
 	ret = 0;
 	while (format[i])
 	{
+		//dprintf(1, "11ptdr//////\n");
 		if (format[i] == '%')
 			ret += read_spec(elem, format, &i);
 		else
 		{
+			//dprintf(1, "12ptdr//////\n");
 			write(1, &format[i], 1);
 			ret++;
 		}

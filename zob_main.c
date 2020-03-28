@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zob_main.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:53:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/23 19:10:39 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/28 02:55:30 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,14 @@ int     main()
     // ft_printf("Mon essai char : [%c]\n", 's');
     // ft_printf("Mon essai chaine : [%s]\n", "A priori...");
     
-    //dprintf(1, "vrai = %*.*s\n", 5, 6, "SALUT MEC");
-    //ft_printf("faux = %*.*s\n", 5, 6, "SALUT MEC");
-    //dprintf(1, "\n");
+    dprintf(1, "vrai = %.*s\n", 6, "SALUT MEC");
+    ft_printf("faux = %.*s\n", 6, "SALUT MEC");
+    //  dprintf(1, "vrai = %*.*s\n", 15, 6, "SALUT MEC");
+    // ft_printf("faux = %*.*s\n", 15, 6, "SALUT MEC");
+    // dprintf(1, "vrai = %d coucou %*.*s\n", 15, 6, 3, "SALUT MEC");
+    // ft_printf("faux = %d coucou %*.*s\n", 15, 6, 3, "SALUT MEC");
+    // ft_printf("faux = %*.*s\n", 15, 6, "SALUT MEC");
+    // dprintf(1, "\n");
     //dprintf(1, "\n");
     //dprintf(1, "\n");
     // dprintf(1, "vrai = %030.20d\n", -2143648);
@@ -41,43 +46,45 @@ int     main()
     // dprintf(1, "\n");
     // dprintf(1, "\n");
     // dprintf(1, "\n");
-    //printf("Le vrai :[%10.5s]\n", "12345678925262515615625614");
-    // printf("Le vrai :[%8.0s]\n", "hello world");
-    // ft_printf("Le faux :[%15.5s]\n", "hello world");
-    //ft_printf("Le faux :[%15.5s]\n", "12345678925262515615625614");
-    // ft_printf("Mon essai chaine avec width : [%s] salut\n", "lol");
-    // ft_printf("Mon essai chaine avec width : [%-24s] salut\n", "lol");
-    // ft_printf("Mon essai chaine avec width : [%24s] salut\n", "lol");
-    // ft_printf("Mon essai chaine avec width : [%.2s] salut\n", "lol");
-    // ft_printf("Mon essai chaine avec width : [%.15s] salut\n", "lol");
-    // ft_printf("Mon essai chaine avec width : [%.15s] salut\n", NULL);
-    // printf("---------------------\n");
-    // printf("Son essai chaine avec width : [%s] salut\n", "lol");
-    // printf("Son essai chaine avec width : [%-24s] salut\n", "lol");
-    // printf("Son essai chaine avec width : [%24s] salut\n", "lol");
-    // printf("Son essai chaine avec width : [%.2s] salut\n", "lol");
-    // printf("Son essai avec precision : [%*s] salut\n", 10, "lol");
-    // printf("Son essai chaine avec width : [%.15s] salut\n", NULL);
-    // ft_printf("Ma fonction : hello %10c\n", 'i');
-    // printf("Le printf : hello %10c\n", 'i');
-    ft_printf("[Faux] : hello %050.6s\n", "my name is Sam");
-    dprintf(1, "[Vrai] : hello %050.6s\n", "my name is Sam");
-    dprintf(1, "\n");
-    dprintf(1, "\n");
-    dprintf(1, "\n");
-    ft_printf("Faux : hello %020.2s\n", "my name is Sam");
-    dprintf(1, "Vrai : hello %020.2s\n", "my name is Sam");
-    dprintf(1, "\n");
-    ft_printf("Faux : hello %030s\n", "my name is Sam");
-    dprintf(1, "Vrai : hello %030s\n", "my name is Sam");
-    dprintf(1, "\n");
+
+    // dprintf(1, "TESTS TYPE S\n");
+    // dprintf(1, "\n");
+    // ft_printf("faux : [%.15s] salut\n", NULL);
+    // dprintf(1, "vrai : [%.15s] salut\n", NULL);
+    // dprintf(1, "\n");
+    // ft_printf("[Faux] : hello %050.6s\n", "my name is Sam");
+    // dprintf(1, "[Vrai] : hello %050.6s\n", "my name is Sam");
+    // dprintf(1, "\n");
+    // ft_printf("Faux : hello %20.s\n", "");
+    // dprintf(1, "Vrai : hello %20.s\n", "");
+    // dprintf(1, "\n");
+    // ft_printf("Faux : hello %-10.3s\n", "my name is Sam");
+    // dprintf(1, "Vrai : hello %-10.3s\n", "my name is Sam");
+    // dprintf(1, "\n");
+    // ft_printf( "faux : '%*s'\n", 3, "basique");
+    // dprintf(1, "vrai : '%*s'\n", 3, "basique");
+    // dprintf(1, "\n");
+    // ft_printf( "faux : '%*s'\n", -10, "basique");
+    // dprintf(1, "vrai : '%*s'\n", -10, "basique");
+    // ft_printf("Faux sefault : %-10s ---- %10s\n", "lol", "mdr");
+    // dprintf(1, "Vrai segfault : %-10s ---- %10s\n", "lol", "mdr");
+    // dprintf(1, "\n");
+    // ft_printf("Faux : %*s ---- %*s\n", -10, "lol", 10, "mdr");
+    // dprintf(1, "Vrai : %*s ---- %*s\n", -10, "lol", 10, "mdr");
+    // dprintf(1, "\n");
+    // ft_printf("faux :[%015.5s]\n", "12345678925262515615625614");
+    // dprintf(1, "vrai :[%015.5s]\n", "12345678925262515615625614");
+   
+
+
+
     // dprintf(1, "vrai : %15c, %-c, %-c, %c\n", 'm', 'a', 'e', 'l');
     // ft_printf("faux : %15c, %-c, %-c, %c\n", 'm', 'a', 'e', 'l');
     // dprintf(1, "\n");
-    // dprintf(1, "vrai : '%*.*s'\n", 3, 3, "basique");
-    // ft_printf( "faux : '%*.*s'\n", 3, 3, "basique");
+       // ft_printf("Ma fonction : hello %10c\n", 'i');
+    // printf("Le printf : hello %10c\n", 'i');
     //printf("Bonjour %d*.15 \n", 10);
-    //printf(" %*s\n %*s\n", -10, "lol", 10, "mdr");
+    
     return (0);
 }
 
@@ -90,3 +97,8 @@ int     main()
 //     //printf("Real[%c] essai", d);
 //     return (0);
 // }
+
+
+// dprintf(1,"ma chaine2 = %s\n", spec->conv);
+			// dprintf(1,"ma chaine = %c\n", spec->conv[index + 1]);
+			// dprintf(1,"ma chaine = %d\n", va_arg(elem, int));
