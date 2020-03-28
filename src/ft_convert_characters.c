@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:36:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/28 02:54:28 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/28 04:22:38 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,7 @@
 
 char   *get_prec_str(char *str, t_spec *spec)
 {
-    dprintf(1,"isprec = %d\n", spec->prec);
-    if (str)
-    {
-        str = ft_substr(str, 0, spec->prec);
-        return (str);
-    }
-    return (NULL);
+    return (ft_substr(str, 0, spec->prec));
     // if ((size_t)spec->is_prec < ft_strlen(str))
     // if ((size_t)spec->width > ft_strlen(str))
     // {
@@ -60,18 +54,18 @@ void            ft_convert_str(va_list elem, t_spec *spec)
    // dprintf(1, "vhfgvhjuyjhvguyjvjbhsuis la\n");
     if (!(str = va_arg(elem, char*)))
         str = "(null)";
-    dprintf(1,"str = %s\n", str);
+    //dprintf(1,"width = %d\n", spec->width);
     if (spec->is_prec)
         str = get_prec_str(str, spec);
     //dprintf(1, "hehehehehehhehehesuis la\n");
     //dprintf(1, "%d, width\n", spec->width);
     if (spec->width)
     {
-         //dprintf(1, "suis la\n");
+        //dprintf(1, "suis la\n");
         spec->len = ft_strlen(str);
         if (spec->width > spec->len)
         {
-            //dprintf(1, "rentre\n");
+            dprintf(1, "rentre\n");
             if (spec->is_minus)
             {
                 ft_putstr_fd(str, 1);

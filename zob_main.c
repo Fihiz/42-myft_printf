@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:53:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/28 02:55:30 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/03/28 04:18:07 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,14 @@ int     main()
     // dprintf(1, "\n");
     // ft_printf( "faux : '%*s'\n", -10, "basique");
     // dprintf(1, "vrai : '%*s'\n", -10, "basique");
-    // ft_printf("Faux sefault : %-10s ---- %10s\n", "lol", "mdr");
+    // ft_printf("Faux segfault : %-10s ---- %10s\n", "lol", "mdr");
     // dprintf(1, "Vrai segfault : %-10s ---- %10s\n", "lol", "mdr");
     // dprintf(1, "\n");
-    // ft_printf("Faux : %*s ---- %*s\n", -10, "lol", 10, "mdr");
-    // dprintf(1, "Vrai : %*s ---- %*s\n", -10, "lol", 10, "mdr");
-    // dprintf(1, "\n");
+    ft_printf("Faux : %*s ---- %*s\n", -15, "lol", -15, "mdr");
+    dprintf(1, "Vrai : %*s ---- %*s\n", -15, "lol", -15, "mdr");
+    dprintf(1, "\n");
+    // ft_printf("Faux : %-10s ---- %-10s\n", "lol", "mdr");
+    // dprintf(1, "Vrai : %-10s ---- %-10s\n", "lol", "mdr");
     // ft_printf("faux :[%015.5s]\n", "12345678925262515615625614");
     // dprintf(1, "vrai :[%015.5s]\n", "12345678925262515615625614");
    
