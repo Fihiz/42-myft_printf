@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_ultoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -48,7 +48,7 @@ static	void	ft_putnbr(char *dest, long int n)
 	ft_charchar(dest, n % 10 + '0');
 }
 
-char			*ft_itoa(int n)
+char			*ft_ultoa(unsigned int n)
 {
 	char *dest;
 

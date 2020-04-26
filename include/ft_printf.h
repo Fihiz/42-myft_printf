@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:52:34 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/23 17:35:19 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/04/25 22:22:10 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdarg.h> 
+# include <stdarg.h>
 # include "../libft/libft.h"
 
 #define TYPES "cspdiuxX%"
+
 
 typedef struct	s_spec
 {
@@ -41,5 +42,6 @@ int	read_spec(va_list elem, const char *format, int *i);
 void ft_convert_char(va_list elem, t_spec *spec);
 void ft_convert_str(va_list elem, t_spec *spec);
 void ft_convert_dec(va_list elem, t_spec *spec);
+void ft_convert_unsigned(va_list elem, t_spec *spec);
 
 #endif

@@ -6,47 +6,92 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 15:56:40 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/04/08 19:30:15 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/04/26 19:16:58 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-char    *get_prec_dec(char *str, t_spec *spec)
-{ 
-    char *new;
+void	*ft_strnew(int size)
+{
+	char	*tab;
+	int		index;
+
+	if (!(tab = malloc(sizeof(char) * (size + 1))))
+		return (NULL);
+	index = 0;
+	while (index <= size)
+		tab[index++] = '\0';
+	return (tab);
+}
+
+char    *apply_prec_for_dec(char *str, t_spec *spec)
+{
+    char *temp;
     int i;
-    int ind;
     
-    i = 0;
-    ind = 0;
+    i = 1;
     spec->len = ft_strlen(str);
-    //dprintf(1, "ICI= %d\n", spec->len);
-    if (spec->prec < spec->len)
+    if (str[0] == '0' && spec->prec == 0)
+        return (ft_substr(str, 0, 0));
+    if (spec->prec <= spec->len)
         return (str);
-    if (spec->prec > spec->len)
+    else
     {
-        if (!(new = malloc(sizeof(spec->prec - spec->len + spec->len + 1))))
-        return (NULL);
+        temp = ft_strnew(spec->prec - spec->len);
         if (str[0] == '-')
-            new[i++] = '-';
-        while (spec->diff++ <= (spec->prec - spec->len - 1))
-             new[i++] = '0';
-        //dprintf(1, "ZOB = [%s]\n", new);
-        while (str[ind])
         {
-            if (str[ind] == '-')
-                str[ind] = '0';
-            new[i + ind] = str[ind];
-            ind++;
+            str = ft_substr(str, 1, ft_strlen(str));
+            temp[0] = '-';
+            while (spec->diff++ <= (spec->prec - spec->len))
+                temp[i++] = '0';
+            return (ft_strjoin(temp, str, 2));
         }
-        new[i + ind] = '\0';
-        //dprintf(1, "MA CHAINE str = [%s]\n", str);
-        return (new);
-        //str = new;
-        //dprintf(1, "ZOB= %s\n", str);
+        else
+        {
+            i = 0;
+            while (spec->diff++ < (spec->prec - spec->len))
+                temp[i++] = '0';
+            return (ft_strjoin(temp, str, 2));
+        }
     }
-    return (str);
+// return (str);
+}
+
+char    *apply_width_for_dec(char *str, t_spec *spec)
+{
+    if (str[0] != '-')
+    {
+        while (spec->diff++ < spec->width - spec->len)
+            write(1, "0", 1);
+        return (str);
+    }
+    else
+    {
+        write(1, "-", 1);
+        while (spec->diff++ < spec->width - spec->len)
+            write(1, "0", 1);
+        return (ft_substr(str, 1, ft_strlen(str)));   
+    }
+}
+
+void    check_width_for_dec(char *str, t_spec *spec)
+{
+    int zob;
+    
+    zob = 0;
+    spec->len = ft_strlen(str);
+    if (spec->is_minus)
+        ft_putstr_fd(str, 1);
+    if (spec->is_zero && !spec->is_prec && !spec->is_minus)
+        str = apply_width_for_dec(str, spec);
+    else
+        {
+            while (zob++ < spec->width - spec->len)
+                write(1, " ", 1);
+        }
+        if (!spec->is_minus)
+            ft_putstr_fd(str, 1);
 }
 
 void    ft_convert_dec(va_list elem, t_spec *spec)
@@ -57,34 +102,41 @@ void    ft_convert_dec(va_list elem, t_spec *spec)
     dec = va_arg(elem, int);
     str = ft_itoa(dec);
     if (spec->is_prec)
-       str = get_prec_dec(str, spec);
+       str = apply_prec_for_dec(str, spec);
     if (spec->width)
     {
+        if (spec->width < 0)
+        {
+             spec->is_minus = 1;
+             spec->width *= -1;
+        }
         spec->len = ft_strlen(str);
         if (spec->width > spec->len)
-        {
-            if (spec->is_minus)
-            {
-                ft_putstr_fd(str, 1);
-            }
-                
-            if (spec->is_zero && !spec->is_prec && !spec->is_minus)
-            {
-                while (spec->diff++ < spec->width - spec->len)
-                    write(1, "0", 1);
-            }
-            else
-            {
-                 while (spec->diff++ < spec->width - spec->len) 
-                    write(1, " ", 1);
-                //printf ("la len de str vaut %zu\n", ft_strlen(str));
-            }
-            if (!spec->is_minus)
-                ft_putstr_fd(str, 1);
-        }
+            check_width_for_dec(str, spec);
         else
             ft_putstr_fd(str, 1);
     }
     else
-        ft_putstr_fd(str, 1);
+       ft_putstr_fd(str, 1);
+}
+
+void    ft_convert_unsigned(va_list elem, t_spec *spec)
+{
+    unsigned dec;
+    char *str;
+    
+    dec = va_arg(elem, unsigned int);
+    str = ft_ultoa(dec);
+    if (spec->is_prec)
+       str = apply_prec_for_dec(str, spec);
+    if (spec->width)
+    {
+        spec->len = ft_strlen(str);
+        if (spec->width > spec->len)
+            check_width_for_dec(str, spec);
+        else
+            ft_putstr_fd(str, 1);
+    }
+    else
+       ft_putstr_fd(str, 1);
 }

@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/03/28 04:09:55 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/04/26 17:00:36 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ int		read_spec(va_list elem, const char *format, int *i)
 	start = ++(*i);
 	while (!ft_strchr(TYPES, format[*i]))
 		(*i)++;
-	//printf("Valeur de i : [%p]\n", i);
 	if (!(spec.conv = ft_substr(format, start, *i - start)) ||
 			!convert_spec(elem, &spec))
 		return (0);
@@ -107,6 +106,8 @@ int		read_spec(va_list elem, const char *format, int *i)
 			ft_convert_str(elem, &spec);
 		if (format[*i] == 'i' || format[*i] == 'd')
 			ft_convert_dec(elem, &spec);
+		if (format[*i] == 'u')
+			ft_convert_unsigned(elem, &spec);
 		/*else
 		 	printf("FAILURE HAPPENS\n");*/
 	}
