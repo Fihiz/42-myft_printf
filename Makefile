@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sad-aude <sad-aude@student.le-101.fr>      +#+  +:+       +#+         #
+#    By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/15 17:48:42 by sad-aude          #+#    #+#              #
-#    Updated: 2020/03/23 18:56:59 by sad-aude         ###   ########lyon.fr    #
+#    Updated: 2020/04/27 19:29:08 by sad-aude         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS = src/ft_printf.c \
 		src/ft_spec.c \
 		src/ft_convert_characters.c \
 		src/ft_convert_int.c \
+		src/ft_convert_symbols.c \
 
 OBJ = $(SRCS:.c=.o)
 

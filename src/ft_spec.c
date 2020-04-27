@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/04/26 17:00:36 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/04/27 19:34:14 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ static	int		convert_spec(va_list elem, t_spec *spec)
 	parsing_flags(spec);
 	spec->width = get_width(elem, spec);
 	spec->prec = get_prec(elem, spec);
-	//printf("WIDTH %d -- PREC %d\n", spec->width, spec->prec);
 	return (1);
 }
 
@@ -108,6 +107,8 @@ int		read_spec(va_list elem, const char *format, int *i)
 			ft_convert_dec(elem, &spec);
 		if (format[*i] == 'u')
 			ft_convert_unsigned(elem, &spec);
+		if (format[*i] == '%')
+			ft_convert_percent(&spec);
 		/*else
 		 	printf("FAILURE HAPPENS\n");*/
 	}

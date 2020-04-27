@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:36:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/04/17 19:36:17 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/04/27 21:16:10 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void    apply_width_for_str(char *str, t_spec *spec)
             if (spec->is_zero && !spec->is_minus)
                  while (spec->diff++ < spec->width - spec->len)
                     write(1, "0", 1);
-            // if (!spec->is_zero || (spec->is_minus && spec->is_zero))
             else
                 while (spec->diff++ < spec->width - spec->len)
                     write(1, " ", 1);
@@ -73,12 +72,12 @@ void            ft_convert_char(va_list elem, t_spec *spec)
         {
             //dprintf(1, "hello\n");
             ft_putchar_fd(c, 1);
-            while (++spec->len < spec->width)
+            while (++spec->diff < spec->width)
                 write(1, " ", 1);
         }
         if (!spec->is_minus)
         {
-            while (++spec->len < spec->width)
+            while (++spec->diff < spec->width)
                 write(1, " ", 1);
             ft_putchar_fd(c, 1);
         }

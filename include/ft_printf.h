@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:52:34 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/04/25 22:22:10 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/04/27 19:34:22 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_spec
 	int			is_minus;
 	int			is_zero;
 	int			is_prec;
+	int			is_percent;
 	int 		width;
 	int 		prec;
 	int 		len;
@@ -43,5 +44,7 @@ void ft_convert_char(va_list elem, t_spec *spec);
 void ft_convert_str(va_list elem, t_spec *spec);
 void ft_convert_dec(va_list elem, t_spec *spec);
 void ft_convert_unsigned(va_list elem, t_spec *spec);
+void ft_convert_percent(t_spec *spec);
+
 
 #endif
