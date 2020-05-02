@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 15:56:40 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/01 21:44:44 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/02 20:17:36 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char    *apply_prec_for_dec(char *str, t_spec *spec)
     spec->len = ft_strlen(str);
     if (str[0] == '0' && spec->prec == 0)
         return (ft_substr(str, 0, 0));
-    if (spec->prec <= spec->len)
+    if (spec->prec < spec->len)
         return (str);
     else
     {
@@ -43,7 +43,6 @@ char    *apply_prec_for_dec(char *str, t_spec *spec)
         {
             str = ft_substr(str, 1, ft_strlen(str));
             temp[0] = '-';
-            spec->count++;
             while (spec->diff++ <= (spec->prec - spec->len))
                 temp[i++] = '0';
             return (ft_strjoin(temp, str, 2));
@@ -118,7 +117,10 @@ void    ft_convert_dec(va_list elem, t_spec *spec)
             spec->count += write(1, str, ft_strlen(str));
     }
     else
-       spec->count += write(1, str, ft_strlen(str));
+    {
+        spec->count += write(1, str, ft_strlen(str));
+        //dprintf(1, "\nJe passe dans le else !\n");
+    }
 }
 
 void    ft_convert_unsigned(va_list elem, t_spec *spec)

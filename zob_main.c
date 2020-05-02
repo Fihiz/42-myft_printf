@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:53:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/02 16:33:51 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/02 20:28:54 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,26 @@ int     main()
 
     fuck = 0;
 
+    // ft_printf("%0-10.4d\n", -42);
+    // dprintf(1, "%0-10.4d\n", -42);
+
+    // ft_printf("faux : %*.10d\n", 10, 42);
+    // dprintf(1, "vrai : %*.10d\n", 10, 42);
+    // ft_printf("%'u\n", 10000);
+    // printf("%'u\n", 10000);
+
+    // ft_printf("%10d\n", 42);
+    // printf("%10d\n", 42);
+
+    // ft_printf("%0*d\n", -10, 42);
+    // printf("%0*d\n", -10, 42);
     // dprintf(1, "TESTS TYPE D\n");
     // dprintf(1, "\n");
     // ft_printf("faux: %d\n", 123);
     // dprintf(1, "vrai: %d\n", 123);
+    // dprintf(1, "\n");
+    // ft_printf("faux: %.3i\n", -42);
+    // dprintf(1, "vrai: %.3i\n", -42);
     // dprintf(1, "\n");
     // ft_printf("faux: %d\n", 2147483647);
     // dprintf(1, "vrai: %d\n", 2147483647);
@@ -30,8 +46,8 @@ int     main()
     // ft_printf("faux: %-d\n", 4294967295);
     // dprintf(1, "vrai: %-d\n", 4294967295);
     // dprintf(1, "\n");
-    // ft_printf("faux: %10.4d\n", -2);
-    // dprintf(1, "vrai: %10.4d\n", -2);
+    // ft_printf("faux: %.2d\n", -2);
+    // dprintf(1, "vrai: %.2d\n", -2);
     // dprintf(1, "\n");
     // ft_printf("faux: %020.10d\n", -123456789);
     // dprintf(1, "vrai: %020.10d\n", -123456789);
@@ -299,7 +315,7 @@ int     main()
 
     
 
-    dprintf(1, "TESTS TYPE C\n");
+    // dprintf(1, "TESTS TYPE C\n");
     // dprintf(1, "\n");
 	// printf("	#2	    ret    '%d' \n", printf("'%10c %4c'", 56, 111));
 	// printf("	#3		ret    '%d' \n", printf("'%*c'", -4, 111));
@@ -311,23 +327,40 @@ int     main()
 	// ft_printf("	#4	    ret    '%d' \n", ft_printf("'%-10c'", 0));
 	// ft_printf("	#5	    ret    '%d' \n", ft_printf("'%*c'", -10, 0));
 	// dprintf(1, "\n");
-    dprintf(1, "LE VRAI = %d\n", printf("oueche : %-19c%c%c%c\n", 'm', 'a', 'e', 'l'));
-    dprintf(1, "LE FAUX = %d\n", ft_printf("oueche : %-19c%c%c%c\n", 'm', 'a', 'e', 'l'));
-    dprintf(1, "\n");
-    dprintf(1, "LE VRAI = %d\n", printf("%-10.3s\n", "mael"));
-    dprintf(1, "LE FAUX = %d\n", ft_printf("%-10.3s\n", "mael"));
-    dprintf(1, "\n");
-    dprintf(1, "LE VRAI = %d\n", printf("%10d-%10d\n", 1234, 20));
-    dprintf(1, "LE FAUX = %d\n", ft_printf("%10d-%10d\n", 1234, 20));
-    dprintf(1, "\n");
-    dprintf(1, "LE VRAI = %d\n", printf("%s\n", "mael"));
-    dprintf(1, "LE FAUX = %d\n", ft_printf("%s\n", "mael"));
-    dprintf(1, "\n");
-    dprintf(1, "LE VRAI = %d\n", printf("%s\n", ""));
-    dprintf(1, "LE FAUX = %d\n", ft_printf("%s\n", ""));
-    dprintf(1, "\n");
-    dprintf(1, "LE VRAI = %d\n", ft_printf("%'u", 1000));
-    dprintf(1, "LE FAUX = %d\n", ft_printf("%'u", 1000));
+    // dprintf(1, "LE VRAI = %d\n", printf("oueche : %-19c%c%c%c\n", 'm', 'a', 'e', 'l'));
+    // dprintf(1, "LE FAUX = %d\n", ft_printf("oueche : %-19c%c%c%c\n", 'm', 'a', 'e', 'l'));
+    // dprintf(1, "\n");
+    // dprintf(1, "LE VRAI = %d\n", printf("%-10.3s\n", "mael"));
+    // dprintf(1, "LE FAUX = %d\n", ft_printf("%-10.3s\n", "mael"));
+    // dprintf(1, "\n");
+    // dprintf(1, "LE VRAI = %d\n", printf("%10d-%10d\n", 1234, 20));
+    // dprintf(1, "LE FAUX = %d\n", ft_printf("%10d-%10d\n", 1234, 20));
+    // dprintf(1, "\n");
+    // dprintf(1, "LE VRAI = %d\n", printf("%.*s", -3, "Hello"));
+    // dprintf(1, "LE FAUX = %d\n", ft_printf("%.*s", -3, "Hello"));
+    // dprintf(1, "\n");
+    // dprintf(1, "LE VRAI = %d\n", printf("%s\n", "mael"));
+    // dprintf(1, "LE FAUX = %d\n", ft_printf("%s\n", "mael"));
+    // dprintf(1, "\n");
+    // ft_printf("LE VRAI = %d\n", printf("%s\n", ""));
+    // dprintf(1, "LE FAUX = %d\n", printf("%s\n", ""));
+    // dprintf(1, "\n");
+    // ft_printf("LE VRAI = %d\n", ft_printf("%.3i\n", -42));
+    // dprintf(1, "LE FAUX = %d\n", dprintf(1, "%.3i\n", -42));
+    // dprintf(1, "\n");
+    // ft_printf("LE VRAI = %d\n", ft_printf("%.s\n", 42));
+    // dprintf(1, "LE FAUX = %d\n", dprintf(1, "%.s\n", 42));
+    // dprintf(1, "\n");
+    // ft_printf("LE VRAI = %d\n", ft_printf("%.3i\n", 42));
+    // dprintf(1, "LE FAUX = %d\n", printf("%.3i\n", 42));
+    // dprintf(1, "\n");
+    // ft_printf("LE VRAI = %d\n", ft_printf("%.20i\n", INT_MAX + 1));
+    // dprintf(1, "LE FAUX = %d\n", printf("%.20i\n", INT_MAX + 1));
+    // dprintf(1, "\n");
+    // ft_printf("LE VRAI = %d\n", ft_printf("%0-10d\n", 42));
+    // dprintf(1, "LE FAUX = %d\n", printf("%0-10d\n", 42));
+    // dprintf(1, "\n");
+    
     // dprintf(1, "vrai : %c\n", 'm');
     // ft_printf("faux : %c\n", 'm');
     // dprintf(1, "\n");

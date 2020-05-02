@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:36:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/01 21:27:47 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/02 20:02:31 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void            ft_convert_str(va_list elem, t_spec *spec)
 
     if (!(str = va_arg(elem, char*)))
         str = "(null)";
-    if (spec->is_prec)
+    if (spec->is_prec && spec->prec >= 0)
         str = apply_prec_for_str(str, spec);
     if (spec->width)
         apply_width_for_str(str, spec);

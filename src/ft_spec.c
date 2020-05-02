@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/01 18:30:48 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/02 20:08:53 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,5 @@ int		read_spec(va_list elem, const char *format, int *i)
 		/*else
 		 	printf("FAILURE HAPPENS\n");*/
 	}
-	//dprintf(1, "\ncount = %d\n", spec.count);
-	//dprintf(1, "\nconv = %s\n", spec.conv);
-	//dprintf(1, "\nsubstr = %s\n", ft_substr(format, start, *i - start));
 	return (spec.count);
 }
