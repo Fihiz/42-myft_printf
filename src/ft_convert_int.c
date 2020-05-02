@@ -6,13 +6,13 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 15:56:40 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/04/26 19:16:58 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/01 21:44:44 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-void	*ft_strnew(int size)
+void	*ft_stringnew(int size)
 {
 	char	*tab;
 	int		index;
@@ -38,11 +38,12 @@ char    *apply_prec_for_dec(char *str, t_spec *spec)
         return (str);
     else
     {
-        temp = ft_strnew(spec->prec - spec->len);
+        temp = ft_stringnew(spec->prec - spec->len);
         if (str[0] == '-')
         {
             str = ft_substr(str, 1, ft_strlen(str));
             temp[0] = '-';
+            spec->count++;
             while (spec->diff++ <= (spec->prec - spec->len))
                 temp[i++] = '0';
             return (ft_strjoin(temp, str, 2));
@@ -63,14 +64,14 @@ char    *apply_width_for_dec(char *str, t_spec *spec)
     if (str[0] != '-')
     {
         while (spec->diff++ < spec->width - spec->len)
-            write(1, "0", 1);
+            spec->count += write(1, "0", 1);
         return (str);
     }
     else
     {
-        write(1, "-", 1);
+        spec->count += write(1, "-", 1);
         while (spec->diff++ < spec->width - spec->len)
-            write(1, "0", 1);
+            spec->count += write(1, "0", 1);
         return (ft_substr(str, 1, ft_strlen(str)));   
     }
 }
@@ -82,16 +83,16 @@ void    check_width_for_dec(char *str, t_spec *spec)
     zob = 0;
     spec->len = ft_strlen(str);
     if (spec->is_minus)
-        ft_putstr_fd(str, 1);
+        spec->count += write(1, str, ft_strlen(str));
     if (spec->is_zero && !spec->is_prec && !spec->is_minus)
         str = apply_width_for_dec(str, spec);
     else
         {
             while (zob++ < spec->width - spec->len)
-                write(1, " ", 1);
+                spec->count += write(1, " ", 1);
         }
         if (!spec->is_minus)
-            ft_putstr_fd(str, 1);
+            spec->count += write(1, str, ft_strlen(str));
 }
 
 void    ft_convert_dec(va_list elem, t_spec *spec)
@@ -114,10 +115,10 @@ void    ft_convert_dec(va_list elem, t_spec *spec)
         if (spec->width > spec->len)
             check_width_for_dec(str, spec);
         else
-            ft_putstr_fd(str, 1);
+            spec->count += write(1, str, ft_strlen(str));
     }
     else
-       ft_putstr_fd(str, 1);
+       spec->count += write(1, str, ft_strlen(str));
 }
 
 void    ft_convert_unsigned(va_list elem, t_spec *spec)
@@ -135,8 +136,8 @@ void    ft_convert_unsigned(va_list elem, t_spec *spec)
         if (spec->width > spec->len)
             check_width_for_dec(str, spec);
         else
-            ft_putstr_fd(str, 1);
+            spec->count += write(1, str, ft_strlen(str));
     }
     else
-       ft_putstr_fd(str, 1);
+       spec->count += write(1, str, ft_strlen(str));
 }

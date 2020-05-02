@@ -6,23 +6,37 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/04/26 17:35:13 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/01 21:13:35 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
+
+// int		lputstr_fd(char *s, int fd)
+// {
+// 	int l;
+
+// 	l = 0;
+// 	if (s)
+// 	{
+// 		l = ft_strlen(s);
+// 		write(fd, s, l);
+// 		return (l);
+// 	}
+// 	return (0);
+// }
 
 int		ft_parsing(va_list elem, const char *format)
 {
 	int	ret;
 	int	i;
 
-	i = 0;
 	ret = 0;
+	i = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
-			ret += read_spec(elem, format, &i);
+			ret += read_spec(elem, format, &i); //ret + spe.count patate !!!!
 		else
 		{
 			write(1, &format[i], 1);
@@ -30,8 +44,8 @@ int		ft_parsing(va_list elem, const char *format)
 		}
 		i++;
 	}
-	//dprintf(1, "ret = %d\n", ret);
-	return (ret + i);
+	//dprintf(1, "i = %d\n", i);
+	return (ret);
 }
 
 int		ft_printf(const char *format, ...)

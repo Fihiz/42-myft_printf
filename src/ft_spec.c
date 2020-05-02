@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/04/27 19:34:14 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/01 18:30:48 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int		read_spec(va_list elem, const char *format, int *i)
 	start = ++(*i);
 	while (!ft_strchr(TYPES, format[*i]))
 		(*i)++;
+	//dprintf(1, "%p\n", i);
 	if (!(spec.conv = ft_substr(format, start, *i - start)) ||
 			!convert_spec(elem, &spec))
 		return (0);
@@ -109,8 +110,13 @@ int		read_spec(va_list elem, const char *format, int *i)
 			ft_convert_unsigned(elem, &spec);
 		if (format[*i] == '%')
 			ft_convert_percent(&spec);
+		if (format[*i] == 'x')
+			ft_convert_hexa(elem, &spec);
 		/*else
 		 	printf("FAILURE HAPPENS\n");*/
 	}
+	//dprintf(1, "\ncount = %d\n", spec.count);
+	//dprintf(1, "\nconv = %s\n", spec.conv);
+	//dprintf(1, "\nsubstr = %s\n", ft_substr(format, start, *i - start));
 	return (spec.count);
 }

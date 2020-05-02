@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:53:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/04/27 21:15:48 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/02 16:33:51 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,12 +299,35 @@ int     main()
 
     
 
-    // dprintf(1, "TESTS TYPE C\n");
-    // dprintf(1, "LE VRAI = %d\n", printf("%c%c%c%c\n", 'm', 'a', 'e', 'l'));
-    // dprintf(1, "LE FAUX = %d\n", ft_printf("%c%c%c%c\n", 'm', 'a', 'e', 'l'));
+    dprintf(1, "TESTS TYPE C\n");
     // dprintf(1, "\n");
-    // dprintf(1, "LE VRAI = %d\n", printf("%10s   \n", "mael"));
-    // dprintf(1, "LE FAUX = %d\n", ft_printf("%10s   \n", "mael"));
+	// printf("	#2	    ret    '%d' \n", printf("'%10c %4c'", 56, 111));
+	// printf("	#3		ret    '%d' \n", printf("'%*c'", -4, 111));
+	// printf("	#4	    ret    '%d' \n", printf("'%-10c'", 0));
+	// printf("	#5	    ret    '%d' \n", printf("'%*c'", -10, 0));
+	// dprintf(1, "\n");
+	// ft_printf("	#2	    ret    '%d' \n", ft_printf("'%10c %4c'", 56, 111));
+	// ft_printf("	#3		ret    '%d' \n", ft_printf("'%*c'", -4, 111));
+	// ft_printf("	#4	    ret    '%d' \n", ft_printf("'%-10c'", 0));
+	// ft_printf("	#5	    ret    '%d' \n", ft_printf("'%*c'", -10, 0));
+	// dprintf(1, "\n");
+    dprintf(1, "LE VRAI = %d\n", printf("oueche : %-19c%c%c%c\n", 'm', 'a', 'e', 'l'));
+    dprintf(1, "LE FAUX = %d\n", ft_printf("oueche : %-19c%c%c%c\n", 'm', 'a', 'e', 'l'));
+    dprintf(1, "\n");
+    dprintf(1, "LE VRAI = %d\n", printf("%-10.3s\n", "mael"));
+    dprintf(1, "LE FAUX = %d\n", ft_printf("%-10.3s\n", "mael"));
+    dprintf(1, "\n");
+    dprintf(1, "LE VRAI = %d\n", printf("%10d-%10d\n", 1234, 20));
+    dprintf(1, "LE FAUX = %d\n", ft_printf("%10d-%10d\n", 1234, 20));
+    dprintf(1, "\n");
+    dprintf(1, "LE VRAI = %d\n", printf("%s\n", "mael"));
+    dprintf(1, "LE FAUX = %d\n", ft_printf("%s\n", "mael"));
+    dprintf(1, "\n");
+    dprintf(1, "LE VRAI = %d\n", printf("%s\n", ""));
+    dprintf(1, "LE FAUX = %d\n", ft_printf("%s\n", ""));
+    dprintf(1, "\n");
+    dprintf(1, "LE VRAI = %d\n", ft_printf("%'u", 1000));
+    dprintf(1, "LE FAUX = %d\n", ft_printf("%'u", 1000));
     // dprintf(1, "vrai : %c\n", 'm');
     // ft_printf("faux : %c\n", 'm');
     // dprintf(1, "\n");
@@ -330,49 +353,70 @@ int     main()
     // ft_printf("faux : %*c\n", -10, 'b');
     // dprintf(1, "\n");
 
-    dprintf(1, "TESTS TYPE %\n");
-    dprintf(1, "\n");
-    ft_printf("faux : [%%.15s] salut\n", NULL);
-    dprintf(1, "vrai : [%%.15s] salut\n", NULL);
-    dprintf(1, "\n");
-    ft_printf("[Faux] : hello %%050%%.6s\n", "my name is Sam");
-    dprintf(1, "[Vrai] : hello %%050%%.6s\n", "my name is Sam");
-    dprintf(1, "\n");
-    ft_printf("Faux : hello %%%%0004%20.s\n", "");
-    dprintf(1, "Vrai : hello %%%%0004%20.s\n", "");
-    dprintf(1, "\n");
-    ft_printf("faux : titi %---12.5% et%%%0004% et %1%\n");
-    dprintf(1, "vrai : titi %---12.5% et%%%0004% et %1%\n");
-    dprintf(1, "\n");
-    ft_printf("faux : %0005% et %1%\n");
-    dprintf(1, "vrai : %0005% et %1%\n");
-    dprintf(1, "\n");
-    ft_printf("faux : %%\n");
-    dprintf(1, "vrai : %%\n");
-    dprintf(1, "\n");
-    ft_printf("faux : %%%%\n");
-    dprintf(1, "vrai : %%%%\n");
-    dprintf(1, "\n");
-    ft_printf("faux : %c\n", '1');
-    dprintf(1, "vrai : %c\n", '1');
-    dprintf(1, "\n");
-    ft_printf("faux : %c\n", 256 + 48);
-    dprintf(1, "vrai : %c\n", 256 + 48);
-    dprintf(1, "\n");
-    ft_printf("faux : %c%%\n", '3');
-    dprintf(1, "vrai : %c%%\n", '3');
-    dprintf(1, "\n");
-    ft_printf("faux : %c%%\n", '129');
-    dprintf(1, "vrai : %c%%\n", '129');
-    dprintf(1, "\n");
-    ft_printf("faux : %c\n", -129);
-    dprintf(1, "vrai : %c\n", -129);
-    dprintf(1, "\n");
-    ft_printf("faux : %s%%\n", "Hello3");
-    dprintf(1, "vrai : %s%%\n", "Hello3");
-    dprintf(1, "\n");
-    ft_printf("faux : %u\n", UINT_MAX + 1);
-    dprintf(1, "vrai : %u\n", UINT_MAX + 1);
+    // dprintf(1, "TESTS TYPE %\n");
+    // dprintf(1, "\n");
+    // ft_printf("faux : [%%.15s] salut\n", NULL);
+    // dprintf(1, "vrai : [%%.15s] salut\n", NULL);
+    // dprintf(1, "\n");
+    // ft_printf("[Faux] : hello %%050%%.6s\n", "my name is Sam");
+    // dprintf(1, "[Vrai] : hello %%050%%.6s\n", "my name is Sam");
+    // dprintf(1, "\n");
+    // ft_printf("Faux : hello %%%%0004%20.s\n", "");
+    // dprintf(1, "Vrai : hello %%%%0004%20.s\n", "");
+    // dprintf(1, "\n");
+    // ft_printf("faux : titi %---12.5% et%%%0004% et %1%\n");
+    // dprintf(1, "vrai : titi %---12.5% et%%%0004% et %1%\n");
+    // dprintf(1, "\n");
+    // ft_printf("faux : %0005% et %1%\n");
+    // dprintf(1, "vrai : %0005% et %1%\n");
+    // dprintf(1, "\n");
+    // ft_printf("faux : %%\n");
+    // dprintf(1, "vrai : %%\n");
+    // dprintf(1, "\n");
+    // ft_printf("faux : %%%%\n");
+    // dprintf(1, "vrai : %%%%\n");
+    // dprintf(1, "\n");
+    // ft_printf("faux : %c\n", '1');
+    // dprintf(1, "vrai : %c\n", '1');
+    // dprintf(1, "\n");
+    // ft_printf("faux : %c\n", 256 + 48);
+    // dprintf(1, "vrai : %c\n", 256 + 48);
+    // dprintf(1, "\n");
+    // ft_printf("faux : %c%%\n", '3');
+    // dprintf(1, "vrai : %c%%\n", '3');
+    // dprintf(1, "\n");
+    // ft_printf("faux : %c%%\n", '129');
+    // dprintf(1, "vrai : %c%%\n", '129');
+    // dprintf(1, "\n");
+    // ft_printf("faux : %c\n", -129);
+    // dprintf(1, "vrai : %c\n", -129);
+    // dprintf(1, "\n");
+    // ft_printf("faux : %s%%\n", "Hello3");
+    // dprintf(1, "vrai : %s%%\n", "Hello3");
+    // dprintf(1, "\n");
+    // ft_printf("faux : %u\n", UINT_MAX + 1);
+    // dprintf(1, "vrai : %u\n", UINT_MAX + 1);
+    // dprintf(1, "LE VRAI = %d\n", printf("try for percent = %10%\n"));
+    // dprintf(1, "LE FAUX = %d\n", ft_printf("try for percent = %10%\n"));
+    // dprintf(1, "\n");
+
+    // dprintf(1, "TESTS TYPE xX\n");
+    // dprintf(1, "\n");
+    // dprintf(1, "vrai : |%20x|\n", 0x123456bc);
+	// ft_printf("faux : |%20x|\n", 0x123456bc);
+    // dprintf(1, "\n");
+	// dprintf(1, "vrai : |%0#10.0x %0#x|\n", 12345, 0);
+	// ft_printf("faux : |%0#10.0x %0#x|\n", 12345, 0);
+    // dprintf(1, "\n");
+	// dprintf(1, "vrai : |%-6x|\n", 0xdd66);
+	// ft_printf("faux : |%-6x|\n", 0xdd66);
+    // dprintf(1, "\n");
+	// dprintf(1, "vrai : |toto %##.0xet %#.X%###.1x|\n", 0, 0, 0);
+	// ft_printf("faux : |toto %##.0xet %#.X%###.1x|\n", 0, 0, 0);
+    // dprintf(1, "\n");
+
+
+
 
 			// dprintf(1, "\n");
 			// ft_printf("	#87	ret    '%d' \n", ft_printf("'%s'", "basique"));

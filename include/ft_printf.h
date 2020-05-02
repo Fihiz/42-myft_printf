@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:52:34 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/04/27 19:34:22 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/01 21:13:50 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,27 @@ typedef struct	s_spec
 	int			is_minus;
 	int			is_zero;
 	int			is_prec;
-	int			is_percent;
 	int 		width;
 	int 		prec;
 	int 		len;
 	int			diff;
-	void 		*arg;
+	void 		*arg; // ?
 } 				t_spec;
 
 int						ft_printf(const char *format, ...)
 						 __attribute__((format(printf,1,2)));
 int     ft_parsing(va_list elem, const char *format);
-int	read_spec(va_list elem, const char *format, int *i);
+// int		lputstr_fd(char *s, int fd);
+int		read_spec(va_list elem, const char *format, int *i);
+char    *apply_prec_for_dec(char *str, t_spec *spec);
+char    *apply_width_for_dec(char *str, t_spec *spec);
+void    check_width_for_dec(char *str, t_spec *spec);
 void ft_convert_char(va_list elem, t_spec *spec);
 void ft_convert_str(va_list elem, t_spec *spec);
 void ft_convert_dec(va_list elem, t_spec *spec);
 void ft_convert_unsigned(va_list elem, t_spec *spec);
 void ft_convert_percent(t_spec *spec);
+void ft_convert_hexa(va_list elem, t_spec *spec);
 
 
 #endif
