@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 15:56:40 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/02 20:17:36 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/02 21:00:55 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,14 @@ char    *apply_prec_for_dec(char *str, t_spec *spec)
     
     i = 1;
     spec->len = ft_strlen(str);
+    //dprintf(1, "vrai");
     if (str[0] == '0' && spec->prec == 0)
         return (ft_substr(str, 0, 0));
     if (spec->prec < spec->len)
+    {
+        //dprintf(1, "ici");
         return (str);
+    }
     else
     {
         temp = ft_stringnew(spec->prec - spec->len);

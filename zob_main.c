@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:53:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/02 20:28:54 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/03 18:41:47 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,14 @@ int     main()
 
     fuck = 0;
 
-    // ft_printf("%0-10.4d\n", -42);
-    // dprintf(1, "%0-10.4d\n", -42);
+    ft_printf("%0-10.4d\n", -42);
+    dprintf(1, "%0-10.4d\n", -42);
 
     // ft_printf("faux : %*.10d\n", 10, 42);
     // dprintf(1, "vrai : %*.10d\n", 10, 42);
+    // dprintf(1, "\n");
+    // ft_printf("faux : %*.*d\n", 10, 10, 42);
+    // dprintf(1, "vrai : %*.*d\n", 10, 10, 42);
     // ft_printf("%'u\n", 10000);
     // printf("%'u\n", 10000);
 
@@ -336,8 +339,8 @@ int     main()
     // dprintf(1, "LE VRAI = %d\n", printf("%10d-%10d\n", 1234, 20));
     // dprintf(1, "LE FAUX = %d\n", ft_printf("%10d-%10d\n", 1234, 20));
     // dprintf(1, "\n");
-    // dprintf(1, "LE VRAI = %d\n", printf("%.*s", -3, "Hello"));
-    // dprintf(1, "LE FAUX = %d\n", ft_printf("%.*s", -3, "Hello"));
+    // dprintf(1, "LE VRAI = %d\n", printf("%.*s", -3, "Hello\n"));
+    // dprintf(1, "LE FAUX = %d\n", ft_printf("%.*s", -3, "Hello\n"));
     // dprintf(1, "\n");
     // dprintf(1, "LE VRAI = %d\n", printf("%s\n", "mael"));
     // dprintf(1, "LE FAUX = %d\n", ft_printf("%s\n", "mael"));

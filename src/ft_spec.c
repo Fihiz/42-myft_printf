@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/02 20:08:53 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/03 18:26:24 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,14 @@ static	int		get_prec(va_list elem, t_spec *spec)
 	int index;
 
 	index = 0;
-	if (!spec->is_star)
-	{
-		while (spec->conv[index] && spec->conv[index] != '.')
-			index++;
-		if (spec->conv[index] == '.' && spec->conv[index + 1] &&
-			ft_isdigit(spec->conv[index + 1]))
-		return (ft_atoi(spec->conv + index + 1));
-	}
-	else
-	{
-		while (spec->conv[index] && spec->conv[index] != '.')
-			index++;
-		if (spec->conv[index] == '.' && spec->conv[index + 1] &&
-			spec->conv[index + 1] == '*')
+	while (spec->conv[index] && spec->conv[index] != '.')
+		index++;
+	if (spec->conv[index] == '.' && spec->conv[index + 1] &&
+		ft_isdigit(spec->conv[index + 1]))
+			return (ft_atoi(spec->conv + index + 1));
+	if (spec->conv[index] == '.' && spec->conv[index + 1] &&
+		spec->conv[index + 1] == '*')
 		return (va_arg(elem, int));
-	}
 	return (0);
 }
 
