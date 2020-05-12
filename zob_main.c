@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 18:53:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/03 18:41:47 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/12 05:35:52 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,42 @@ int     main()
     int fuck;
 
     fuck = 0;
+	
+    //ft_printf("faux : %*.10d\n", 10, 42);
+    //dprintf(1, "vrai : %*.10d\n", 10, 42);
+    //dprintf(1, "\n");
+    //ft_printf("faux : %*.*d\n", 10, 10, 42);
+    //dprintf(1, "vrai : %*.*d\n", 10, 10, 42);
+    // ft_printf("%x\n", 192);
+    // printf("%x\n", 192);
 
-    ft_printf("%0-10.4d\n", -42);
-    dprintf(1, "%0-10.4d\n", -42);
-
-    // ft_printf("faux : %*.10d\n", 10, 42);
-    // dprintf(1, "vrai : %*.10d\n", 10, 42);
-    // dprintf(1, "\n");
-    // ft_printf("faux : %*.*d\n", 10, 10, 42);
-    // dprintf(1, "vrai : %*.*d\n", 10, 10, 42);
-    // ft_printf("%'u\n", 10000);
-    // printf("%'u\n", 10000);
-
-    // ft_printf("%10d\n", 42);
-    // printf("%10d\n", 42);
+	//ft_printf("[faux] = %0 i\n", 42);
+    //dprintf(1, "[vrai] = %0 i\n", 42);
+	//dprintf(1, "\n");
+	//ft_printf("[faux] = %+i\n", 42);
+    //dprintf(1, "[vrai] = %+i\n", 42);
+	//dprintf(1, "\n");
+	//ft_printf("%*s\n", 10, "Hello");
+    //dprintf(1, "%*s\n", 10, "Hello");
+	//dprintf(1, "\n");
+	//ft_printf("[faux] = %*+d\n", 10, 42);
+    //dprintf(1, "[vrai] = %*+d\n", 10, 42);
+	//dprintf(1, "\n");
+	//ft_printf("[faux] = %#i\n", 42);
+    //dprintf(1, "[vrai] = %#i\n", 42);
+	//dprintf(1, "\n");
+	//ft_printf("[faux] = % d\n", 42);
+    //dprintf(1, "[vrai] = % d\n", 42);
+	//dprintf(1, "\n");
+    //ft_printf("[faux] = %0 10i\n", 42);
+    //dprintf(1, "[vrai] = %0 10i\n", 42);
+	//dprintf(1, "\n");
+	//ft_printf("[faux] = %0 10i\n", -42);
+    //dprintf(1, "[vrai] = %0 10i\n", -42);
+	//dprintf(1, "\n");
+	//ft_printf("[faux] = %+s\n", "hello");
+    //dprintf(1, "[vrai] = %+s\n", "hello");
+	
 
     // ft_printf("%0*d\n", -10, 42);
     // printf("%0*d\n", -10, 42);
@@ -267,8 +289,8 @@ int     main()
     // ft_printf("faux : [%.15s] salut\n", NULL);
     // dprintf(1, "vrai : [%.15s] salut\n", NULL);
     // dprintf(1, "\n");
-    // ft_printf("[Faux] : hello %050.6s\n", "my name is Sam");
-    // dprintf(1, "[Vrai] : hello %050.6s\n", "my name is Sam");
+    // ft_printf("[Faux] : hello %50.6 s\n", "my name is Sam");
+    // dprintf(1, "[Vrai] : hello %50.6 s\n", "my name is Sam");
     // dprintf(1, "\n");
     // ft_printf("Faux : hello %20.s\n", "");
     // dprintf(1, "Vrai : hello %20.s\n", "");
@@ -363,6 +385,11 @@ int     main()
     // ft_printf("LE VRAI = %d\n", ft_printf("%0-10d\n", 42));
     // dprintf(1, "LE FAUX = %d\n", printf("%0-10d\n", 42));
     // dprintf(1, "\n");
+	ft_printf("LE VRAI = %d\n", ft_printf("%6p\n", (void*)42));
+    dprintf(1, "LE FAUX = %d\n", printf("%6p\n", (void*)42));
+    //dprintf(1, "\n");
+	//ft_printf("LE VRAI = %d\n", ft_printf("%p\n", (void*)10000));
+    //dprintf(1, "LE FAUX = %d\n", printf("%p\n", (void*)10000));
     
     // dprintf(1, "vrai : %c\n", 'm');
     // ft_printf("faux : %c\n", 'm');
