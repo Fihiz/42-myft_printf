@@ -6,7 +6,7 @@
 #    By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/15 17:48:42 by sad-aude          #+#    #+#              #
-#    Updated: 2020/04/27 21:29:04 by sad-aude         ###   ########lyon.fr    #
+#    Updated: 2020/05/15 00:22:51 by sad-aude         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ SRCS = src/ft_printf.c \
 		src/ft_convert_int.c \
 		src/ft_convert_symbols.c \
 		src/ft_convert_hexandpointer.c \
+		src/utils_for_pointer.c \
+		src/utils_for_hexa.c \
+		src/utils_for_int.c \
 
 OBJ = $(SRCS:.c=.o)
 

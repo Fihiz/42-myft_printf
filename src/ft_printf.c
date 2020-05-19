@@ -6,25 +6,11 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/01 21:13:35 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/15 01:42:14 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-
-// int		lputstr_fd(char *s, int fd)
-// {
-// 	int l;
-
-// 	l = 0;
-// 	if (s)
-// 	{
-// 		l = ft_strlen(s);
-// 		write(fd, s, l);
-// 		return (l);
-// 	}
-// 	return (0);
-// }
 
 int		ft_parsing(va_list elem, const char *format)
 {
@@ -44,7 +30,6 @@ int		ft_parsing(va_list elem, const char *format)
 		}
 		i++;
 	}
-	//dprintf(1, "i = %d\n", i);
 	return (ret);
 }
 

@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:36:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/11 21:20:18 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/15 00:01:07 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_convert_char(va_list elem, t_spec *spec)
 		}
 		if (spec->is_minus)
 		{
-			ft_putchar_fd(c, 1);
+			spec->count += write(1, &c, 1);
 			while (++spec->diff < spec->width)
 				spec->count += write(1, " ", 1);
 		}
@@ -78,10 +78,9 @@ void	ft_convert_char(va_list elem, t_spec *spec)
 		{
 			while (++spec->diff < spec->width)
 				spec->count += write(1, " ", 1);
-			ft_putchar_fd(c, 1);
+			spec->count += write(1, &c, 1);
 		}
 	}
 	else
-		ft_putchar_fd(c, 1);
-	spec->count++;
+		spec->count += write(1, &c, 1);
 }
