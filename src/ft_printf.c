@@ -22,7 +22,7 @@ int		ft_parsing(va_list elem, const char *format)
 	while (format[i])
 	{
 		if (format[i] == '%')
-			ret += read_spec(elem, format, &i); //ret + spe.count patate !!!!
+			ret += read_spec(elem, format, &i);
 		else
 		{
 			write(1, &format[i], 1);

@@ -54,7 +54,7 @@ char			*ft_strjoin(char *s1, char *s2, int id);
 char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
 char			*ft_itoa(int n);
-char 			*ft_ultoa(unsigned int n);
+char			*ft_ultoa(unsigned int n);
 char			*ft_itoa_base(unsigned int value, int base);
 char			*ft_ultoa_base(unsigned long long value, int base);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));

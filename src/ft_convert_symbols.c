@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/01 20:38:12 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/21 21:44:43 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_convert_percent(t_spec *spec)
 {
+	//dprintf(1, "width : %d\n", spec->width);
 	if (spec->width)
 	{
 		if (spec->width < 0)

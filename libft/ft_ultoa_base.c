@@ -20,20 +20,18 @@ unsigned long long		ft_pow_long(int nb, int pow)
 		return (nb * ft_pow_long(nb, pow - 1));
 }
 
-char		*ft_result_long(char *nbr, unsigned long long value, int base, int i)
+char					*ft_result_long(char *nbr, unsigned long long value,
+							int base, int i)
 {
 	int neg;
+	int	convert;
 
 	neg = 0;
+	convert = 0;
 	while (i-- > 0)
 	{
-		int convert;
-
-		convert = 0;
-		if ( value % base > 9)
-		{
+		if (value % base > 9)
 			convert = 'a' - 10;
-		}
 		else
 			convert = '0';
 		nbr[i + neg] = (value % base) + convert;
@@ -44,7 +42,7 @@ char		*ft_result_long(char *nbr, unsigned long long value, int base, int i)
 	return (nbr);
 }
 
-char		*ft_ultoa_base(unsigned long long value, int base)
+char					*ft_ultoa_base(unsigned long long value, int base)
 {
 	int		i;
 	char	*nbr;
@@ -63,6 +61,5 @@ char		*ft_ultoa_base(unsigned long long value, int base)
 	if (!(nbr = (char *)malloc(sizeof(nbr) * i + neg)))
 		return (NULL);
 	nbr[i + neg] = '\0';
-
 	return (ft_result_long(nbr, value, base, i));
 }

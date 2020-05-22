@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_for_int.c                         			:+:      :+:    :+:   */
+/*   utils_for_int.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/14 22:10:50 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/22 18:27:56 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,15 @@ char	*apply_width_for_dec(char *str, t_spec *spec)
 {
 	if (str[0] != '-')
 	{
-		if (spec->is_space)
+		if (spec->is_space && !spec->is_plus)
 		{
 			spec->count += write(1, " ", 1);
 			while (spec->diff++ < spec->width - spec->len - 1)
 				spec->count += write(1, "0", 1);
 			return (str);
 		}
+		if (spec->is_plus && spec->positive_dec)
+			spec->count += write(1, "+", 1);
 		while (spec->diff++ < spec->width - spec->len)
 			spec->count += write(1, "0", 1);
 		return (str);
@@ -78,11 +80,12 @@ void	check_width_for_dec(char *str, t_spec *spec)
 
 	indic = 0;
 	spec->len = ft_strlen(str);
-	if ((spec->is_plus && spec->positive_dec) || (spec->is_space && !spec->positive_dec && !spec->is_zero && !spec->is_minus))
+	if ((spec->is_plus && spec->positive_dec) || (spec->is_space
+		&& !spec->positive_dec && !spec->is_zero && !spec->is_minus))
 		spec->width -= 1;
 	if (spec->is_minus)
 	{
-		if (spec->is_space && spec->positive_dec)
+		if (spec->is_space && spec->positive_dec /*&& !spec->is_plus*/)
 			spec->count += write(1, " ", 1);
 		spec->count += write(1, str, ft_strlen(str));
 	}
@@ -95,10 +98,12 @@ void	check_width_for_dec(char *str, t_spec *spec)
 	}
 	if (!spec->is_minus)
 	{
-		//if (spec->is_space && spec->positive_dec)
-		//	spec->count += write(1, " ", 1);
-		if (spec->is_plus && spec->positive_dec)
+		if (spec->is_plus && spec->positive_dec && !spec->is_zero) 
+		{
 			spec->count += write(1, "+", 1);
+			//if (spec->is_zero)
+			// 	spec->count += write(1, "0", 1);
+		}
 		spec->count += write(1, str, ft_strlen(str));
 	}
 }

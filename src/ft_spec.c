@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/19 17:37:16 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/22 17:35:56 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,22 @@ static	int		get_width(va_list elem, t_spec *spec)
 	int index;
 
 	index = 0;
-	//dprintf(1, "lol = %d\n", spec->width);
-	if (!spec->is_star || (spec->is_prec && spec->is_width))
+	if (!spec->is_star || (spec->is_prec && spec->is_width) /*|| (spec->is_star && spec->is_zero)*/)
 	{
 		while (spec->conv[index] && !ft_isdigit(spec->conv[index]))
 			index++;
 		if (ft_isdigit(spec->conv[index]) && (index - 1 < 0 ||
 					spec->conv[index - 1] != '.'))
 		{
-			if (spec->conv[index + 1] != '-' /*&& spec->conv[index + 1] != ' '*/ && !spec->is_zero)
+			if (spec->conv[index + 1] != '-' && !spec->is_zero /*&& spec->conv[index + 1] != ' '*/)
 				return (ft_atoi(spec->conv + index));
+			else if (spec->conv[index] == '0')
+			{
+				while (spec->conv[index] == '0' || spec->conv[index] == '-')
+					index++;
+				if (spec->conv[index + 1] != '-')
+					return (ft_atoi(spec->conv + index));
+			}
 			else
 				return (ft_atoi(spec->conv + index + 1));
 		}
@@ -78,8 +84,11 @@ static	void	parsing_flags(t_spec *spec)
 		index++;
 	if (spec->conv[index] && spec->conv[index] == '0'
 		&& spec->conv[index - 1] != '.' && spec->conv[index + 1] != '#')
-		spec->is_zero = 1;
-	if (spec->conv[index] && spec->conv[index] != '0'
+		{
+			spec->is_zero = 1;
+			index++;
+		}
+	if (spec->conv[index] && ft_isdigit(spec->conv[index]) && spec->conv[index] != '0'
 		&& spec->conv[index - 1] != '.' && spec->conv[index + 1] != '#')
 		spec->is_width = 1;
 }
@@ -89,7 +98,6 @@ static	int		convert_spec(va_list elem, t_spec *spec)
 	spec->type = spec->conv[ft_strlen(spec->conv) - 1];
 	parsing_flags(spec);
 	spec->width = get_width(elem, spec);
-	//dprintf(1, "%d\n", spec->width);
 	spec->prec = get_prec(elem, spec);
 	return (1);
 }
@@ -106,7 +114,6 @@ int				read_spec(va_list elem, const char *format, int *i)
 	if (!(spec.conv = ft_substr(format, start, *i - start)) ||
 			!convert_spec(elem, &spec))
 		return (0);
-	//dprintf(1, "au debut : %s\n", spec.conv);
 	if (ft_strchr(TYPES, format[*i]))
 	{
 		if (format[*i] == 'c')
