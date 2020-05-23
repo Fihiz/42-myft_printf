@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 15:07:14 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/15 00:07:09 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 01:24:53 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int				ft_isascii(int c);
 int				ft_isprint(int c);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
+char			*ft_strcapitalize(char *str);
 char			*ft_strchr(const char *s, int c);
 int				ft_strichr(char *str, char c);
 char			*ft_strrchr(const char *s, int c);

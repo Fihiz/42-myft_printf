@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:52:34 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/22 18:13:25 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 02:17:52 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_spec
 	char		*conv;
 	int			count;
 	char		type;
+	int			parser;
 	int			is_star;
 	int			is_minus;
 	int			is_zero;
@@ -37,12 +38,16 @@ typedef struct	s_spec
 	int			prec;
 	int			len;
 	int			diff;
+	int			indic;
 }				t_spec;
 
 int				ft_printf(const char *format, ...)
 						 __attribute__((format(printf,1,2)));
 int				ft_parsing(va_list elem, const char *format);
 int				read_spec(va_list elem, const char *format, int *i);
+int				get_width(va_list elem, t_spec *spec);
+int				get_nostar_width(t_spec *spec);
+int				get_prec(va_list elem, t_spec *spec);
 /*
 **       FUNCTIONS FOR D AND I TYPES
 */
@@ -54,11 +59,15 @@ void			check_width_for_dec(char *str, t_spec *spec);
 /*
 **       FUNCTIONS FOR P TYPE
 */
-void			apply_convert_pointer(char *str, int *pointer, t_spec *spec);
-char			*apply_prec_for_pointer(char *str, int *pointer, t_spec *spec);
+void			apply_convert_pointer(char *str, int *point, t_spec *spec);
+char			*apply_prec_for_pointer(char *str, int *point, t_spec *spec);
+char			*longprec_for_pointer(char *str, char *hexa, int *point,
+t_spec *spec);
 char			*apply_width_for_pointer(char *str, t_spec *spec);
+void			apply_longwidth_for_pointer(t_spec *spec);
 void			check_width_for_pointer(char *str, t_spec *spec);
-char			*ft_strcapitalize(char *str);
+void			apply_notflags_pointer(char *str, char *lol, int *point,
+t_spec *spec);
 /*
 **       FUNCTIONS FOR xX TYPE
 */
@@ -68,6 +77,7 @@ char			*apply_prec_for_hexa(char *str, int hexa, t_spec *spec);
 char			*apply_longprec_for_hexa(char *str, int hexa, char *temp,
 						t_spec *spec);
 char			*apply_width_for_hexa(char *str, int hexa, t_spec *spec);
+char			*apply_longwidth_for_hexa(char *str, int hexa, t_spec *spec);
 void			check_width_for_hexa(char *str, int hexa, t_spec *spec);
 /*
 **       BASICS FOR CONVERSIONS

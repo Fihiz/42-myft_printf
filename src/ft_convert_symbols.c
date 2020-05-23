@@ -14,7 +14,6 @@
 
 void	ft_convert_percent(t_spec *spec)
 {
-	//dprintf(1, "width : %d\n", spec->width);
 	if (spec->width)
 	{
 		if (spec->width < 0)

@@ -14,9 +14,6 @@
 
 void	apply_convert_dec(char *str, t_spec *spec)
 {
-	//dprintf(1, "j'ai un plus : %d\n", spec->is_plus);
-	//dprintf(1, "j'ai un espace : %d", spec->is_space);
-	//dprintf(1, "j'ai un zero : %d", spec->is_zero);
 	if (spec->is_plus && spec->positive_dec)
 		spec->count += write(1, "+", 1);
 	if (spec->is_space && spec->positive_dec && !spec->is_plus)
@@ -30,7 +27,6 @@ void	ft_convert_dec(va_list elem, t_spec *spec)
 	char	*str;
 
 	dec = va_arg(elem, int);
-	//dprintf(1, "j'ai un plus : %d\n", spec->is_plus);
 	if (dec >= 0)
 		spec->positive_dec = 1;
 	str = ft_itoa(dec);

@@ -6,15 +6,14 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/22 19:15:31 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 00:39:10 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-void	apply_convert_pointer(char *str, int *pointer, t_spec *spec)
+void	apply_convert_pointer(char *str, int *point, t_spec *spec)
 {
-	//dprintf(1, "\nlol 3 : %s\n", str);
 	if (spec->width < 0)
 	{
 		spec->is_minus = 1;
@@ -25,10 +24,10 @@ void	apply_convert_pointer(char *str, int *pointer, t_spec *spec)
 		check_width_for_pointer(str, spec);
 	else
 	{
-		//dprintf(1, "\nlol 4 : %s\n", str);
 		if (spec->is_space)
 			spec->count += write(1, " ", 1);
-		if (((spec->is_minus && !spec->is_prec) || (spec->is_star && !spec->is_prec)) && pointer != 0)
+		if (((spec->is_minus && !spec->is_prec) ||
+		(spec->is_star && !spec->is_prec)) && point != 0)
 			spec->count += write(1, "0x", 2);
 		spec->count += write(1, str, ft_strlen(str));
 	}
@@ -36,7 +35,6 @@ void	apply_convert_pointer(char *str, int *pointer, t_spec *spec)
 
 void	apply_convert_hexa(char *str, char *sharp, int hexa, t_spec *spec)
 {
-	//dprintf(1, "\nhela : %s\n", str);
 	if (spec->width < 0)
 	{
 		spec->is_minus = 1;
@@ -47,7 +45,6 @@ void	apply_convert_hexa(char *str, char *sharp, int hexa, t_spec *spec)
 		check_width_for_hexa(str, hexa, spec);
 	else
 	{
-		//dprintf(1, "\nhela : %s\n", str);
 		if (spec->is_sharp && !spec->is_prec && hexa != 0)
 			str = ft_strjoin(sharp, ft_itoa_base(hexa, 16), 2);
 		if (spec->is_majhexa)
@@ -69,7 +66,6 @@ void	ft_convert_hexa(va_list elem, t_spec *spec)
 	sharp[1] = 'x';
 	if (spec->is_majhexa)
 		str = ft_strcapitalize(str);
-	//dprintf(1, "\nhela : %s\n", str);
 	if (spec->is_prec)
 		str = apply_prec_for_hexa(str, hexa, spec);
 	if (spec->width)
@@ -84,49 +80,41 @@ void	ft_convert_hexa(va_list elem, t_spec *spec)
 			str = ft_strcapitalize(str);
 		spec->count += write(1, str, ft_strlen(str));
 	}
-	//dprintf(1, "\nOOOK : %s\n", str);
+}
+
+void	apply_notflags_pointer(char *str, char *lol, int *point, t_spec *spec)
+{
+	if (spec->is_star && !spec->width && !spec->is_prec)
+		str = ft_strjoin(lol,
+		ft_ultoa_base((unsigned long long)point, 16), 2);
+	spec->count += write(1, str, ft_strlen(str));
 }
 
 void	ft_convert_pointer(va_list elem, t_spec *spec)
 {
-	int		*pointer;
+	int		*point;
 	char	*str;
 	char	*lol;
 
-	pointer = va_arg(elem, void*);
+	point = va_arg(elem, void*);
 	lol = ft_stringnew(3);
 	lol[0] = '0';
 	lol[1] = 'x';
-	//dprintf(1, "\nlol : %p\n", pointer);
-	if (pointer == 0)
+	if (point == 0)
 	{
 		str = ft_stringnew(3);
 		str[0] = lol[0];
 		str[1] = lol[1];
 	}
 	else
-		str = ft_ultoa_base((unsigned long long)pointer, 16);
+		str = ft_ultoa_base((unsigned long long)point, 16);
 	if ((!spec->is_minus && !spec->is_prec && !spec->is_star)
 			|| (spec->is_minus && !spec->width && !spec->is_prec))
-		str = ft_strjoin(lol, ft_ultoa_base((unsigned long long)pointer, 16), 2);
-	if (spec->is_prec /*&& pointer != 0*/)
-		str = apply_prec_for_pointer(str, pointer, spec);
-	//dprintf(1, "\nlol 2 : %s\n", str);
-	//else if (spec->is_prec && pointer == 0)
-	//{
-	//	//dprintf(1, "\nlol 2 : %s\n", str);
-	//}
-	////dprintf(1, "\nlol 2 : %p\n", pointer);
+		str = ft_strjoin(lol, ft_ultoa_base((unsigned long long)point, 16), 2);
+	if (spec->is_prec)
+		str = apply_prec_for_pointer(str, point, spec);
 	if (spec->width)
-	{
-		//dprintf(1, "\nlol 2 : %s\n", str);
-		apply_convert_pointer(str, pointer, spec);
-	}
+		apply_convert_pointer(str, point, spec);
 	else
-	{
-		//dprintf(1, "\nlol : %d\n", spec->is_prec);
-		if (spec->is_star && !spec->width /*&& pointer !=0*/  && !spec->is_prec)
-			str = ft_strjoin(lol, ft_ultoa_base((unsigned long long)pointer, 16), 2);
-		spec->count += write(1, str, ft_strlen(str));
-	}
+		apply_notflags_pointer(str, lol, point, spec);
 }

@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/22 18:27:56 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 00:23:33 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,16 +76,13 @@ char	*apply_width_for_dec(char *str, t_spec *spec)
 
 void	check_width_for_dec(char *str, t_spec *spec)
 {
-	int indic;
-
-	indic = 0;
 	spec->len = ft_strlen(str);
 	if ((spec->is_plus && spec->positive_dec) || (spec->is_space
 		&& !spec->positive_dec && !spec->is_zero && !spec->is_minus))
 		spec->width -= 1;
 	if (spec->is_minus)
 	{
-		if (spec->is_space && spec->positive_dec /*&& !spec->is_plus*/)
+		if (spec->is_space && spec->positive_dec)
 			spec->count += write(1, " ", 1);
 		spec->count += write(1, str, ft_strlen(str));
 	}
@@ -93,17 +90,13 @@ void	check_width_for_dec(char *str, t_spec *spec)
 		str = apply_width_for_dec(str, spec);
 	else
 	{
-		while (indic++ < spec->width - spec->len)
+		while (spec->indic++ < spec->width - spec->len)
 			spec->count += write(1, " ", 1);
 	}
 	if (!spec->is_minus)
 	{
-		if (spec->is_plus && spec->positive_dec && !spec->is_zero) 
-		{
+		if (spec->is_plus && spec->positive_dec && !spec->is_zero)
 			spec->count += write(1, "+", 1);
-			//if (spec->is_zero)
-			// 	spec->count += write(1, "0", 1);
-		}
 		spec->count += write(1, str, ft_strlen(str));
 	}
 }

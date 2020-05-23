@@ -48,8 +48,6 @@ void	ft_convert_str(va_list elem, t_spec *spec)
 
 	if (!(str = va_arg(elem, char*)))
 		str = "(null)";
-	//if (spec->is_prec && va_arg(elem, int) && !va_arg(elem, char*))
-	//	str = "";
 	if (spec->is_prec && spec->prec >= 0)
 		str = apply_prec_for_str(str, spec);
 	if (spec->width)

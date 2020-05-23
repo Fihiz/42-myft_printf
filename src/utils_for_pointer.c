@@ -6,32 +6,35 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 15:56:40 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/22 19:15:15 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 01:32:24 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-char	*ft_strcapitalize(char *str)
+char	*longprec_for_pointer(char *str, char *hexa, int *point, t_spec *spec)
 {
 	int i;
 
 	i = 0;
-	while (str[i])
+	if (point == 0)
 	{
-		str[i] = ft_toupper(str[i]);
-		i++;
+		while (spec->diff++ < (spec->prec - spec->len + 2))
+			hexa[i++] = '0';
+		return (ft_strjoin(str, hexa, 2));
 	}
-	return (str);
+	while (spec->diff++ < (spec->prec - spec->len))
+		hexa[i++] = '0';
+	return (ft_strjoin(hexa, str, 2));
 }
 
-char	*apply_prec_for_pointer(char *str, int *pointer, t_spec *spec)
+char	*apply_prec_for_pointer(char *str, int *point, t_spec *spec)
 {
 	char	*hexa;
 	int		i;
 
 	i = 2;
-	if (pointer != 0)
+	if (point != 0)
 	{
 		hexa = ft_stringnew(2 + spec->prec - spec->len);
 		hexa[0] = '0';
@@ -43,20 +46,25 @@ char	*apply_prec_for_pointer(char *str, int *pointer, t_spec *spec)
 	if (spec->prec < spec->len)
 		return (ft_strjoin(hexa, str, 3));
 	else
-	{
-		if (pointer == 0)
-		{
-			i = 0;
-			while (spec->diff++ < (spec->prec - spec->len + 2))
-				hexa[i++] = '0';
-			//printf("lol 2 : %s\n", hexa);
-			return (ft_strjoin(str, hexa, 2));
-		}
-		while (spec->diff++ < (spec->prec - spec->len))
-			hexa[i++] = '0';
-		return (ft_strjoin(hexa, str, 2));
-	}
+		str = longprec_for_pointer(str, hexa, point, spec);
 	return (NULL);
+}
+
+void	apply_longwidth_for_pointer(t_spec *spec)
+{
+	int indic;
+
+	indic = 0;
+	if (spec->is_star || spec->is_minus)
+	{
+		while (indic++ < spec->width - spec->len)
+			spec->count += write(1, " ", 1);
+	}
+	else
+	{
+		while (indic++ < spec->width - spec->len)
+			spec->count += write(1, " ", 1);
+	}
 }
 
 char	*apply_width_for_pointer(char *str, t_spec *spec)
@@ -71,11 +79,7 @@ char	*apply_width_for_pointer(char *str, t_spec *spec)
 
 void	check_width_for_pointer(char *str, t_spec *spec)
 {
-	int indic;
-
-	indic = 0;
 	spec->len = ft_strlen(str);
-	//dprintf(1, "\nlol 2 : %s\n", str);
 	if (spec->is_minus)
 	{
 		if (!spec->is_prec)
@@ -88,20 +92,7 @@ void	check_width_for_pointer(char *str, t_spec *spec)
 	if (spec->is_zero && !spec->is_prec && !spec->is_minus)
 		str = apply_width_for_pointer(str, spec);
 	else
-	{
-		if (spec->is_star || spec->is_minus)
-		{
-			while (indic++ < spec->width - spec->len)
-				spec->count += write(1, " ", 1);
-		}
-		else
-		{
-			while (indic++ < spec->width - spec->len)
-				spec->count += write(1, " ", 1);
-		}
-		//if (spec->is_star && !spec->is_minus)
-		//	spec->count += write(1, "0x", 2);
-	}
+		apply_longwidth_for_pointer(spec);
 	if (!spec->is_minus)
 		spec->count += write(1, str, spec->len);
 }

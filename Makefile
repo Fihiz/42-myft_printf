@@ -6,7 +6,7 @@
 #    By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/15 17:48:42 by sad-aude          #+#    #+#              #
-#    Updated: 2020/05/15 00:22:51 by sad-aude         ###   ########lyon.fr    #
+#    Updated: 2020/05/23 02:00:15 by sad-aude         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS = src/ft_printf.c \
 		src/utils_for_pointer.c \
 		src/utils_for_hexa.c \
 		src/utils_for_int.c \
+		src/utils_for_widthandprec.c \
 
 OBJ = $(SRCS:.c=.o)
 

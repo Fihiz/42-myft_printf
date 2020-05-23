@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/22 18:20:03 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 00:13:02 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,29 @@ char	*apply_width_for_hexa(char *str, int hexa, t_spec *spec)
 	return (str);
 }
 
-void	check_width_for_hexa(char *str, int hexa, t_spec *spec)
+char	*apply_longwidth_for_hexa(char *str, int hexa, t_spec *spec)
 {
 	int indic;
 
 	indic = 0;
-	//dprintf(1, "\nhela : %s\n", str);
+	if (spec->is_sharp && hexa != 0 && !spec->is_minus && !spec->is_prec)
+	{
+		spec->width -= 2;
+		while (indic++ < spec->width - spec->len)
+			spec->count += write(1, " ", 1);
+		if (spec->is_majhexa)
+			spec->count += write(1, "0X", 2);
+		else
+			spec->count += write(1, "0x", 2);
+	}
+	else
+		while (indic++ < spec->width - spec->len)
+			spec->count += write(1, " ", 1);
+	return (str);
+}
+
+void	check_width_for_hexa(char *str, int hexa, t_spec *spec)
+{
 	spec->len = ft_strlen(str);
 	if (spec->is_minus)
 	{
@@ -94,21 +111,7 @@ void	check_width_for_hexa(char *str, int hexa, t_spec *spec)
 	if (spec->is_zero && !spec->is_prec && !spec->is_minus)
 		str = apply_width_for_hexa(str, hexa, spec);
 	else
-	{
-		if (spec->is_sharp && hexa != 0 && !spec->is_minus && !spec->is_prec)
-		{
-			spec->width -= 2;
-			while (indic++ < spec->width - spec->len)
-				spec->count += write(1, " ", 1);
-			if (spec->is_majhexa)
-				spec->count += write(1, "0X", 2);
-			else
-				spec->count += write(1, "0x", 2);
-		}
-		else
-			while (indic++ < spec->width - spec->len)
-				spec->count += write(1, " ", 1);
-	}
+		str = apply_longwidth_for_hexa(str, hexa, spec);
 	if (!spec->is_minus)
 		spec->count += write(1, str, ft_strlen(str));
 }

@@ -6,7 +6,7 @@
 #    By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/24 14:55:27 by sad-aude          #+#    #+#              #
-#    Updated: 2020/05/15 00:05:26 by sad-aude         ###   ########lyon.fr    #
+#    Updated: 2020/05/23 01:25:08 by sad-aude         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ SRCS	=	ft_memset.c \
 			ft_ultoa.c \
 			ft_itoa_base.c \
 			ft_ultoa_base.c \
-			ft_stringnew.c
+			ft_stringnew.c \
+			ft_strcapitalize.c
 
 BONUSSRCS	=	ft_lstnew_bonus.c \
 				ft_lstadd_front_bonus.c \
