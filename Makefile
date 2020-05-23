@@ -6,7 +6,7 @@
 #    By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/15 17:48:42 by sad-aude          #+#    #+#              #
-#    Updated: 2020/05/23 02:00:15 by sad-aude         ###   ########lyon.fr    #
+#    Updated: 2020/05/23 21:10:30 by sad-aude         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,8 @@ $(NAME): $(LIB) $(OBJ)
 
 %.o: %.c
 	$(C) $(FLAGS) -o $@ -c $<
+
+bonus: all
 
 clean:
 	rm -rf $(OBJ)
