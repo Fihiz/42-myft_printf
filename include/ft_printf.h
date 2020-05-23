@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:52:34 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/23 02:17:52 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 17:58:41 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,5 @@ void			ft_convert_unsigned(va_list elem, t_spec *spec);
 void			ft_convert_percent(t_spec *spec);
 void			ft_convert_hexa(va_list elem, t_spec *spec);
 void			ft_convert_pointer(va_list elem, t_spec *spec);
-/*
-** void			*ft_stringnew(int size);
-*/
 
 #endif
