@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/23 00:23:33 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 03:53:19 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,8 @@ void	check_width_for_dec(char *str, t_spec *spec)
 	}
 	if (!spec->is_minus)
 	{
-		if (spec->is_plus && spec->positive_dec && !spec->is_zero)
+		if (spec->is_plus && spec->positive_dec &&
+			(!spec->is_zero || spec->is_prec))
 			spec->count += write(1, "+", 1);
 		spec->count += write(1, str, ft_strlen(str));
 	}

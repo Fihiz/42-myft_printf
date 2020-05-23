@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 15:56:40 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/23 01:32:24 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 17:28:23 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ char	*longprec_for_pointer(char *str, char *hexa, int *point, t_spec *spec)
 {
 	int i;
 
-	i = 0;
+	i = 2;
 	if (point == 0)
 	{
+		i = 0;
 		while (spec->diff++ < (spec->prec - spec->len + 2))
 			hexa[i++] = '0';
 		return (ft_strjoin(str, hexa, 2));
@@ -31,9 +32,7 @@ char	*longprec_for_pointer(char *str, char *hexa, int *point, t_spec *spec)
 char	*apply_prec_for_pointer(char *str, int *point, t_spec *spec)
 {
 	char	*hexa;
-	int		i;
 
-	i = 2;
 	if (point != 0)
 	{
 		hexa = ft_stringnew(2 + spec->prec - spec->len);
@@ -46,8 +45,7 @@ char	*apply_prec_for_pointer(char *str, int *point, t_spec *spec)
 	if (spec->prec < spec->len)
 		return (ft_strjoin(hexa, str, 3));
 	else
-		str = longprec_for_pointer(str, hexa, point, spec);
-	return (NULL);
+		return (longprec_for_pointer(str, hexa, point, spec));
 }
 
 void	apply_longwidth_for_pointer(t_spec *spec)

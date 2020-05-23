@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/23 02:24:52 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 03:52:02 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ int		get_nostar_width(t_spec *spec)
 				spec->conv[index - 1] != '.'))
 	{
 		if (spec->conv[index + 1] != '-' && !spec->is_zero)
+		{
+			if (spec->conv[index + 1] == '#')
+				return (ft_atoi(spec->conv + index + 2));
 			return (ft_atoi(spec->conv + index));
+		}
 		else if (spec->conv[index] == '0')
 		{
 			while (spec->conv[index] == '0' || spec->conv[index] == '-')

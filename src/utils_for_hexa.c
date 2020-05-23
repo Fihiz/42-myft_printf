@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/23 00:13:02 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/23 03:48:39 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void	check_width_for_hexa(char *str, int hexa, t_spec *spec)
 	spec->len = ft_strlen(str);
 	if (spec->is_minus)
 	{
-		if (spec->is_sharp && hexa != 0)
+		if (spec->is_sharp && hexa != 0 && !spec->is_prec)
 		{
 			spec->width -= 2;
 			if (spec->is_majhexa)
