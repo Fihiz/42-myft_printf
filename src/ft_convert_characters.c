@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:36:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/21 23:42:55 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/24 23:31:20 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ void	ft_convert_str(va_list elem, t_spec *spec)
 		apply_width_for_str(str, spec);
 	else
 		spec->count += write(1, str, ft_strlen(str));
-	free (str);
 }
 
 void	ft_convert_char(va_list elem, t_spec *spec)
