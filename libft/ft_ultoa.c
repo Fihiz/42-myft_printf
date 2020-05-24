@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:57:59 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/04/25 20:54:51 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/24 14:46:31 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,8 @@ char			*ft_ultoa(unsigned int n)
 {
 	char *dest;
 
-	if (n >= 0)
-	{
-		if (!(dest = malloc(ft_number(n) + 1)))
-			return (NULL);
-	}
-	else
-	{
-		if (!(dest = malloc(ft_number(n) + 2)))
-			return (NULL);
-	}
+	if (!(dest = malloc(ft_number(n) + 1)))
+		return (NULL);
 	*dest = 0;
 	n = (long int)n;
 	ft_putnbr(dest, n);
