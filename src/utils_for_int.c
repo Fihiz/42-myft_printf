@@ -25,14 +25,14 @@ char	*apply_longprec_for_dec(char *str, t_spec *spec)
 		temp[0] = '-';
 		while (spec->diff++ <= (spec->prec - spec->len))
 			temp[i++] = '0';
-		return (ft_strjoin(temp, str, 2));
+		return (ft_strjoin(temp, str, 3));
 	}
 	else
 	{
 		i = 0;
 		while (spec->diff++ < (spec->prec - spec->len))
 			temp[i++] = '0';
-		return (ft_strjoin(temp, str, 2));
+		return (ft_strjoin(temp, str, 3));
 	}
 }
 

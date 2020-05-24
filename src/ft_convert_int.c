@@ -47,6 +47,7 @@ void	ft_convert_dec(va_list elem, t_spec *spec)
 	}
 	else
 		apply_convert_dec(str, spec);
+	free (str);
 }
 
 void	ft_convert_unsigned(va_list elem, t_spec *spec)
@@ -73,4 +74,5 @@ void	ft_convert_unsigned(va_list elem, t_spec *spec)
 	}
 	else
 		spec->count += write(1, str, ft_strlen(str));
+	free (str);
 }

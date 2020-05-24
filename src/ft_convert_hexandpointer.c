@@ -61,7 +61,7 @@ void	ft_convert_hexa(va_list elem, t_spec *spec)
 
 	hexa = va_arg(elem, int);
 	str = ft_itoa_base(hexa, 16);
-	sharp = ft_stringnew(3);
+	sharp = ft_stringnew(2);
 	sharp[0] = '0';
 	sharp[1] = 'x';
 	if (spec->is_majhexa)
@@ -69,9 +69,7 @@ void	ft_convert_hexa(va_list elem, t_spec *spec)
 	if (spec->is_prec)
 		str = apply_prec_for_hexa(str, hexa, spec);
 	if (spec->width)
-	{
 		apply_convert_hexa(str, sharp, hexa, spec);
-	}
 	else
 	{
 		if (spec->is_sharp && !spec->is_prec && hexa != 0)
@@ -80,6 +78,8 @@ void	ft_convert_hexa(va_list elem, t_spec *spec)
 			str = ft_strcapitalize(str);
 		spec->count += write(1, str, ft_strlen(str));
 	}
+	free (sharp);
+	free (str);
 }
 
 void	apply_notflags_pointer(char *str, char *lol, int *point, t_spec *spec)
@@ -88,6 +88,7 @@ void	apply_notflags_pointer(char *str, char *lol, int *point, t_spec *spec)
 		str = ft_strjoin(lol,
 		ft_ultoa_base((unsigned long long)point, 16), 2);
 	spec->count += write(1, str, ft_strlen(str));
+	free (str);
 }
 
 void	ft_convert_pointer(va_list elem, t_spec *spec)
@@ -97,12 +98,12 @@ void	ft_convert_pointer(va_list elem, t_spec *spec)
 	char	*lol;
 
 	point = va_arg(elem, void*);
-	lol = ft_stringnew(3);
+	lol = ft_stringnew(2);
 	lol[0] = '0';
 	lol[1] = 'x';
 	if (point == 0)
 	{
-		str = ft_stringnew(3);
+		str = ft_stringnew(2);
 		str[0] = lol[0];
 		str[1] = lol[1];
 	}
@@ -117,4 +118,6 @@ void	ft_convert_pointer(va_list elem, t_spec *spec)
 		apply_convert_pointer(str, point, spec);
 	else
 		apply_notflags_pointer(str, lol, point, spec);
+	free (lol);
+	free (str);
 }

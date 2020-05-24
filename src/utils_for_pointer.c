@@ -22,11 +22,11 @@ char	*longprec_for_pointer(char *str, char *hexa, int *point, t_spec *spec)
 		i = 0;
 		while (spec->diff++ < (spec->prec - spec->len + 2))
 			hexa[i++] = '0';
-		return (ft_strjoin(str, hexa, 2));
+		return (ft_strjoin(str, hexa, 3));
 	}
 	while (spec->diff++ < (spec->prec - spec->len))
 		hexa[i++] = '0';
-	return (ft_strjoin(hexa, str, 2));
+	return (ft_strjoin(hexa, str, 3));
 }
 
 char	*apply_prec_for_pointer(char *str, int *point, t_spec *spec)

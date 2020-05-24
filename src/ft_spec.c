@@ -90,5 +90,6 @@ int				read_spec(va_list elem, const char *format, int *i)
 			!convert_spec(elem, &spec))
 		return (0);
 	types_parser(elem, format, i, &spec);
+	free(spec.conv);
 	return (spec.count);
 }

@@ -54,6 +54,7 @@ void	ft_convert_str(va_list elem, t_spec *spec)
 		apply_width_for_str(str, spec);
 	else
 		spec->count += write(1, str, ft_strlen(str));
+	free (str);
 }
 
 void	ft_convert_char(va_list elem, t_spec *spec)

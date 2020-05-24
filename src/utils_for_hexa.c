@@ -21,7 +21,7 @@ char	*apply_longprec_for_hexa(char *str, int hexa, char *temp, t_spec *spec)
 		i = 2;
 	while (spec->diff++ < (spec->prec - spec->len))
 		temp[i++] = '0';
-	str = ft_strjoin(temp, str, 2);
+	str = ft_strjoin(temp, str, 3);
 	if (spec->is_majhexa)
 		ft_strcapitalize(str);
 	return (str);
@@ -45,7 +45,7 @@ char	*apply_prec_for_hexa(char *str, int hexa, t_spec *spec)
 	if (spec->prec < spec->len)
 	{
 		if (spec->is_sharp)
-			str = ft_strjoin(temp, str, 2);
+			str = ft_strjoin(temp, str, 3);
 		if (spec->is_majhexa)
 			ft_strcapitalize(str);
 		return (str);
