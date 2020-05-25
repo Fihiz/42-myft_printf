@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 16:52:34 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/23 17:58:41 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/25 00:21:52 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,10 @@ char			*apply_longprec_for_hexa(char *str, int hexa, char *temp,
 char			*apply_width_for_hexa(char *str, int hexa, t_spec *spec);
 char			*apply_longwidth_for_hexa(char *str, int hexa, t_spec *spec);
 void			check_width_for_hexa(char *str, int hexa, t_spec *spec);
+/*
+**       FUNCTIONS FOR s TYPE
+*/
+void	apply_width_for_str(char *str, t_spec *spec);
 /*
 **       BASICS FOR CONVERSIONS
 */

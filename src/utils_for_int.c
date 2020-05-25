@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/23 03:53:19 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/24 23:54:00 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ char	*apply_longprec_for_dec(char *str, t_spec *spec)
 		temp[0] = '-';
 		while (spec->diff++ <= (spec->prec - spec->len))
 			temp[i++] = '0';
-		return (ft_strjoin(temp, str, 2));
+		return (ft_strjoin(temp, str, 3));
 	}
 	else
 	{
 		i = 0;
 		while (spec->diff++ < (spec->prec - spec->len))
 			temp[i++] = '0';
-		return (ft_strjoin(temp, str, 2));
+		return (ft_strjoin(temp, str, 3));
 	}
 }
 

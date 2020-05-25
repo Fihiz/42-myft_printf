@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/23 17:27:52 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/25 01:50:23 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_convert_hexa(va_list elem, t_spec *spec)
 
 	hexa = va_arg(elem, int);
 	str = ft_itoa_base(hexa, 16);
-	sharp = ft_stringnew(3);
+	sharp = ft_stringnew(2);
 	sharp[0] = '0';
 	sharp[1] = 'x';
 	if (spec->is_majhexa)
@@ -80,6 +80,8 @@ void	ft_convert_hexa(va_list elem, t_spec *spec)
 			str = ft_strcapitalize(str);
 		spec->count += write(1, str, ft_strlen(str));
 	}
+	free(sharp);
+	free(str);
 }
 
 void	apply_notflags_pointer(char *str, char *lol, int *point, t_spec *spec)
@@ -97,12 +99,12 @@ void	ft_convert_pointer(va_list elem, t_spec *spec)
 	char	*lol;
 
 	point = va_arg(elem, void*);
-	lol = ft_stringnew(3);
+	lol = ft_stringnew(2);
 	lol[0] = '0';
 	lol[1] = 'x';
 	if (point == 0)
 	{
-		str = ft_stringnew(3);
+		str = ft_stringnew(2);
 		str[0] = lol[0];
 		str[1] = lol[1];
 	}
@@ -117,4 +119,6 @@ void	ft_convert_pointer(va_list elem, t_spec *spec)
 		apply_convert_pointer(str, point, spec);
 	else
 		apply_notflags_pointer(str, lol, point, spec);
+	free (lol);
+	free (str);
 }

@@ -6,16 +6,16 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:36:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/24 23:31:20 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/25 01:14:12 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-char	*apply_prec_for_str(char *str, t_spec *spec)
-{
-	return (ft_substr(str, 0, spec->prec));
-}
+//char	*apply_prec_for_str(char *str, t_spec *spec)
+//{
+//	return (ft_substr(str, 0, spec->prec));
+//}
 
 void	apply_width_for_str(char *str, t_spec *spec)
 {
@@ -44,16 +44,23 @@ void	apply_width_for_str(char *str, t_spec *spec)
 
 void	ft_convert_str(va_list elem, t_spec *spec)
 {
-	char *str;
+	char	*str;
+	int		check;
 
+	check = 0;
 	if (!(str = va_arg(elem, char*)))
 		str = "(null)";
 	if (spec->is_prec && spec->prec >= 0)
-		str = apply_prec_for_str(str, spec);
+	{
+		str = ft_substr(str, 0, spec->prec);
+		check = 1;
+	}
 	if (spec->width)
 		apply_width_for_str(str, spec);
 	else
 		spec->count += write(1, str, ft_strlen(str));
+	if (check == 1)
+		free(str);
 }
 
 void	ft_convert_char(va_list elem, t_spec *spec)

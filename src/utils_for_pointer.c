@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 15:56:40 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/23 17:28:23 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/25 01:43:59 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ char	*longprec_for_pointer(char *str, char *hexa, int *point, t_spec *spec)
 		i = 0;
 		while (spec->diff++ < (spec->prec - spec->len + 2))
 			hexa[i++] = '0';
-		return (ft_strjoin(str, hexa, 2));
+		return (ft_strjoin(str, hexa, 3));
 	}
 	while (spec->diff++ < (spec->prec - spec->len))
 		hexa[i++] = '0';
-	return (ft_strjoin(hexa, str, 2));
+	return (ft_strjoin(hexa, str, 3));
 }
 
 char	*apply_prec_for_pointer(char *str, int *point, t_spec *spec)

@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 15:56:40 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/22 17:43:02 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/24 23:52:03 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	ft_convert_dec(va_list elem, t_spec *spec)
 	}
 	else
 		apply_convert_dec(str, spec);
+	free(str);
 }
 
 void	ft_convert_unsigned(va_list elem, t_spec *spec)

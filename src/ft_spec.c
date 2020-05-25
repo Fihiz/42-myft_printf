@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/23 02:44:21 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/24 23:46:22 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,5 +90,6 @@ int				read_spec(va_list elem, const char *format, int *i)
 			!convert_spec(elem, &spec))
 		return (0);
 	types_parser(elem, format, i, &spec);
+	free(spec.conv);
 	return (spec.count);
 }
