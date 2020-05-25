@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 15:56:40 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/24 23:52:03 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/25 19:42:47 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ void	ft_convert_unsigned(va_list elem, t_spec *spec)
 	}
 	else
 		spec->count += write(1, str, ft_strlen(str));
+	free(str);
 }

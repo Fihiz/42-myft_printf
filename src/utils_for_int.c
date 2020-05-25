@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/24 23:54:00 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/26 01:29:57 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,31 @@
 
 char	*apply_longprec_for_dec(char *str, t_spec *spec)
 {
-	int		i;
 	char	*temp;
 
-	i = 1;
-	temp = ft_stringnew(spec->prec - spec->len);
 	if (str[0] == '-')
 	{
-		str = ft_substr(str, 1, ft_strlen(str));
-		temp[0] = '-';
-		while (spec->diff++ <= (spec->prec - spec->len))
-			temp[i++] = '0';
-		return (ft_strjoin(temp, str, 3));
+		if (!(temp = ft_stringnew(spec->prec - spec->len + 2)))
+			return (NULL);
+		if (!(str = ft_substr(str, 1, ft_strlen(str))))
+			return (NULL);
+		temp[spec->diff] = '-';
+		while (++spec->diff < (spec->prec - spec->len + 2))
+			temp[spec->diff] = '0';
+		if (!(str = ft_strjoin(temp, str, 3)))
+			return (NULL);
+		return (str);
 	}
 	else
 	{
-		i = 0;
-		while (spec->diff++ < (spec->prec - spec->len))
-			temp[i++] = '0';
-		return (ft_strjoin(temp, str, 3));
+		if (!(temp = ft_stringnew(spec->prec - spec->len)))
+			return (NULL);
+		spec->diff = -1;
+		while (++spec->diff < (spec->prec - spec->len))
+			temp[spec->diff] = '0';
+		if (!(str = ft_strjoin(temp, str, 3)))
+			return (NULL);
+		return (str);
 	}
 }
 
