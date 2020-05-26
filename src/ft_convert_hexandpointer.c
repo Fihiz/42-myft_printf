@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/25 01:50:23 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/26 18:07:21 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	apply_convert_hexa(char *str, char *sharp, int hexa, t_spec *spec)
 	}
 }
 
-void	ft_convert_hexa(va_list elem, t_spec *spec)
+int		ft_convert_hexa(va_list elem, t_spec *spec)
 {
 	int		hexa;
 	char	*str;
@@ -75,36 +75,46 @@ void	ft_convert_hexa(va_list elem, t_spec *spec)
 	else
 	{
 		if (spec->is_sharp && !spec->is_prec && hexa != 0)
-			str = ft_strjoin(sharp, ft_itoa_base(hexa, 16), 2);
+		{
+			if (!(str = ft_strjoin(sharp, ft_itoa_base(hexa, 16), 2)))
+				return (0);
+		}
 		if (spec->is_majhexa)
 			str = ft_strcapitalize(str);
 		spec->count += write(1, str, ft_strlen(str));
 	}
 	free(sharp);
 	free(str);
+	return (1);
 }
 
-void	apply_notflags_pointer(char *str, char *lol, int *point, t_spec *spec)
+int		apply_notflags_pointer(char *str, char *lol, int *point, t_spec *spec)
 {
 	if (spec->is_star && !spec->width && !spec->is_prec)
-		str = ft_strjoin(lol,
-		ft_ultoa_base((unsigned long long)point, 16), 2);
+	{
+		if (!(str = ft_strjoin(lol,
+		ft_ultoa_base((unsigned long long)point, 16), 2)))
+			return (0);
+	}
 	spec->count += write(1, str, ft_strlen(str));
+	return (1);
 }
 
-void	ft_convert_pointer(va_list elem, t_spec *spec)
+int		ft_convert_pointer(va_list elem, t_spec *spec)
 {
 	int		*point;
 	char	*str;
 	char	*lol;
 
 	point = va_arg(elem, void*);
-	lol = ft_stringnew(2);
+	if (!(lol = ft_stringnew(2)))
+		return (0);
 	lol[0] = '0';
 	lol[1] = 'x';
 	if (point == 0)
 	{
-		str = ft_stringnew(2);
+		if (!(str = ft_stringnew(2)))
+			return (0);
 		str[0] = lol[0];
 		str[1] = lol[1];
 	}
@@ -112,7 +122,10 @@ void	ft_convert_pointer(va_list elem, t_spec *spec)
 		str = ft_ultoa_base((unsigned long long)point, 16);
 	if ((!spec->is_minus && !spec->is_prec && !spec->is_star)
 			|| (spec->is_minus && !spec->width && !spec->is_prec))
-		str = ft_strjoin(lol, ft_ultoa_base((unsigned long long)point, 16), 2);
+	{
+		if (!(str = ft_strjoin(lol, ft_ultoa_base((unsigned long long)point, 16), 2)))
+			return (0);
+	}
 	if (spec->is_prec)
 		str = apply_prec_for_pointer(str, point, spec);
 	if (spec->width)
@@ -121,4 +134,5 @@ void	ft_convert_pointer(va_list elem, t_spec *spec)
 		apply_notflags_pointer(str, lol, point, spec);
 	free (lol);
 	free (str);
+	return (1);
 }

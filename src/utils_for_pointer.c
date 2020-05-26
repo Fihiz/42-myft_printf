@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 15:56:40 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/26 04:17:25 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/26 19:06:47 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*longprec_for_pointer(char *str, char *hexa, int *point, t_spec *spec)
 	}
 	while (spec->diff++ < (spec->prec - spec->len))
 		hexa[i++] = '0';
-	if (!(str =ft_strjoin(str, hexa, 3)))
+	if (!(str =ft_strjoin(hexa, str, 3)))
 			return (NULL);
 	return (str);
 }
@@ -40,15 +40,23 @@ char	*apply_prec_for_pointer(char *str, int *point, t_spec *spec)
 
 	if (point != 0)
 	{
-		hexa = ft_stringnew(2 + spec->prec - spec->len);
+		if (!(hexa = ft_stringnew(2 + spec->prec - spec->len)))
+			return (NULL);
 		hexa[0] = '0';
 		hexa[1] = 'x';
 	}
 	else
-		hexa = ft_stringnew(spec->prec - spec->len);
+	{
+		if (!(hexa = ft_stringnew(spec->prec - spec->len)))
+			return (NULL);
+	}
 	spec->len = ft_strlen(str);
 	if (spec->prec < spec->len)
-		return (ft_strjoin(hexa, str, 3));
+	{
+		if (!(str = ft_strjoin(hexa, str, 3)))
+			return (NULL);
+		return (str);
+	}
 	else
 		return (longprec_for_pointer(str, hexa, point, spec));
 }

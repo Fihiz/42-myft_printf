@@ -6,16 +6,11 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:36:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/26 03:32:19 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/26 17:59:23 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
-
-//char	*apply_prec_for_str(char *str, t_spec *spec)
-//{
-//	return (ft_substr(str, 0, spec->prec));
-//}
 
 void	apply_width_for_str(char *str, t_spec *spec)
 {
@@ -42,7 +37,7 @@ void	apply_width_for_str(char *str, t_spec *spec)
 		spec->count += write(1, str, ft_strlen(str));
 }
 
-void	ft_convert_str(va_list elem, t_spec *spec)
+int		ft_convert_str(va_list elem, t_spec *spec)
 {
 	char	*str;
 	int		check;
@@ -52,7 +47,8 @@ void	ft_convert_str(va_list elem, t_spec *spec)
 		str = "(null)";
 	if (spec->is_prec && spec->prec >= 0)
 	{
-		str = ft_substr(str, 0, spec->prec);
+		if (!(str = ft_substr(str, 0, spec->prec)))
+			return (0);
 		check = 1;
 	}
 	if (spec->width)
@@ -61,6 +57,7 @@ void	ft_convert_str(va_list elem, t_spec *spec)
 		spec->count += write(1, str, ft_strlen(str));
 	if (check == 1)
 		free(str);
+	return (1);
 }
 
 void	ft_convert_char(va_list elem, t_spec *spec)

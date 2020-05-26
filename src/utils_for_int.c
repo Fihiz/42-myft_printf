@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/26 03:32:41 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/26 17:31:31 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,11 @@ char	*apply_prec_for_dec(char *str, t_spec *spec)
 {
 	spec->len = ft_strlen(str);
 	if (str[0] == '0' && spec->prec == 0)
-		return (ft_substr(str, 0, 0));
+	{
+		if (!(str = ft_substr(str, 0, 0)))
+			return (NULL);
+		return (str);
+	}
 	if (spec->prec < spec->len)
 		return (str);
 	else
@@ -76,7 +80,9 @@ char	*apply_width_for_dec(char *str, t_spec *spec)
 		spec->count += write(1, "-", 1);
 		while (spec->diff++ < spec->width - spec->len)
 			spec->count += write(1, "0", 1);
-		return (ft_substr(str, 1, ft_strlen(str)));
+		if (!(str = ft_substr(str, 1, ft_strlen(str))))
+			return (NULL);
+		return (str);
 	}
 }
 
