@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/26 00:55:23 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/26 04:03:26 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static	void	flags_parser(t_spec *spec)
 		spec->parser++;
 	}
 	else if (spec->conv[spec->parser] && ft_isdigit(spec->conv[spec->parser]) && spec->conv[spec->parser] == '0'
-		&& spec->conv[spec->parser - 1] != '.'
+		//&& spec->conv[spec->parser - 1] != '.'
 		&& spec->conv[spec->parser + 1] != '#')
 	{
 		spec->is_zero = 1;

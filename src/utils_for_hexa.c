@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/25 01:21:02 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/26 04:19:44 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 char	*apply_longprec_for_hexa(char *str, int hexa, char *temp, t_spec *spec)
 {
+	//penser à modifier comme dans utils for int
 	int	i;
 
 	i = 0;
@@ -21,7 +22,8 @@ char	*apply_longprec_for_hexa(char *str, int hexa, char *temp, t_spec *spec)
 		i = 2;
 	while (spec->diff++ < (spec->prec - spec->len))
 		temp[i++] = '0';
-	str = ft_strjoin(temp, str, 3);
+	if (!(str = ft_strjoin(temp, str, 3)))
+		return (NULL);
 	if (spec->is_majhexa)
 		ft_strcapitalize(str);
 	return (str);
