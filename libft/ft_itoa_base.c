@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 15:56:40 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/25 17:38:29 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/29 01:24:02 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,6 @@ char			*ft_itoa_base(unsigned int value, int base)
 	char	*nbr;
 
 	i = 1;
-	//if (value < 0)
-	//{
-	//	if (base == 10)
-	//		neg = 1;
-	//	value *= -1;
-	//}
 	while (ft_pow(base, i) - 1 < value)
 		i++;
 	if (!(nbr = (char *)malloc(sizeof(nbr) * i)))

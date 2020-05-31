@@ -6,13 +6,13 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:50:00 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/26 04:03:26 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/31 08:08:12 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-static	void	flags_parser(t_spec *spec)
+static	void	flags_parser_two(t_spec *spec)
 {
 	if (ft_strchr(spec->conv, '.'))
 		spec->is_prec = 1;
@@ -26,15 +26,21 @@ static	void	flags_parser(t_spec *spec)
 		spec->is_space = 1;
 	if (ft_strchr(spec->conv, '#'))
 		spec->is_sharp = 1;
+}
+
+static	void	flags_parser_one(t_spec *spec)
+{
+	flags_parser_two(spec);
 	while (spec->conv[spec->parser] && !ft_isdigit(spec->conv[spec->parser]))
 		spec->parser++;
-	if (spec->parser == 0 && spec->conv[spec->parser] == '0' && spec->conv[spec->parser + 1] != '#')
+	if (spec->parser == 0 && spec->conv[spec->parser] == '0'
+		&& spec->conv[spec->parser + 1] != '#')
 	{
 		spec->is_zero = 1;
 		spec->parser++;
 	}
-	else if (spec->conv[spec->parser] && ft_isdigit(spec->conv[spec->parser]) && spec->conv[spec->parser] == '0'
-		//&& spec->conv[spec->parser - 1] != '.'
+	else if (spec->conv[spec->parser] && ft_isdigit(spec->conv[spec->parser])
+		&& spec->conv[spec->parser] == '0'
 		&& spec->conv[spec->parser + 1] != '#')
 	{
 		spec->is_zero = 1;
@@ -42,17 +48,16 @@ static	void	flags_parser(t_spec *spec)
 	}
 	if (spec->parser == 0 && ft_isdigit(spec->conv[spec->parser]))
 		spec->is_width = 1;
-	else if (spec->parser != 0 && spec->conv[spec->parser] && ft_isdigit(spec->conv[spec->parser])
+	else if (spec->parser != 0 && spec->conv[spec->parser]
+		&& ft_isdigit(spec->conv[spec->parser])
 		&& spec->conv[spec->parser] != '0' && spec->conv[spec->parser - 1]
 		!= '.' && spec->conv[spec->parser + 1] != '#')
-			spec->is_width = 1;
+		spec->is_width = 1;
 }
 
 static	int		convert_spec(va_list elem, t_spec *spec)
 {
-	//spec->type = spec->conv[ft_strlen(spec->conv)];
-	//dprintf(1, "mon spec->type = %c\n", spec->type);
-	flags_parser(spec);
+	flags_parser_one(spec);
 	spec->width = get_width(elem, spec);
 	spec->prec = get_prec(elem, spec);
 	return (1);
@@ -93,11 +98,15 @@ int				read_spec(va_list elem, const char *format, int *i)
 	ft_bzero(&spec, sizeof(spec));
 	start = ++(*i);
 	while (!ft_strchr(TYPES, format[*i]))
+	{
+		//if (format[*i] == '%' && (format[*i + 1] && (format[*i + 1] != 's')))
+		//	spec.check = 1;
 		(*i)++;
-	if (!(spec.conv = ft_substr(format, start, *i - start)) ||
+	}
+	if (!(spec.conv = ft_substr((char*)format, start, *i - start, 0)) ||
 			!convert_spec(elem, &spec))
 		return (0);
 	types_parser(elem, format, i, &spec);
-	free(spec.conv);
+	ft_strdel(&spec.conv);
 	return (spec.count);
 }

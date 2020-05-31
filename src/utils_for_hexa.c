@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/26 18:36:35 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/31 19:32:04 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,22 @@
 
 char	*apply_longprec_for_hexa(char *str, int hexa, char *temp, t_spec *spec)
 {
-	//penser à modifier comme dans utils for int
 	int	i;
 
 	i = 0;
+	if (spec->prec < spec->len)
+	{
+		if (spec->is_sharp)
+		{
+			if (!(str = ft_strjoin(temp, str, 3)))
+				return (NULL);
+		}
+		else
+			ft_strdel(&temp);
+		if (spec->is_majhexa)
+			ft_strcapitalize(str);
+		return (str);
+	}
 	if (spec->is_sharp && hexa != 0)
 		i = 2;
 	while (spec->diff++ < (spec->prec - spec->len))
@@ -33,40 +45,33 @@ char	*apply_prec_for_hexa(char *str, int hexa, t_spec *spec)
 {
 	char	*temp;
 
-	//dprintf(1, "well: %zu\n", ft_strlen(str));
 	if (str[0] == '0' && spec->prec == 0)
 	{
+		ft_strdel(&str);
 		if (!(str = ft_stringnew(0)))
 			return (NULL);
 		return (str);
 	}
 	if (spec->is_sharp && hexa != 0)
 	{
-		temp = ft_stringnew(2 + spec->prec - spec->len);
+		if (!(temp = ft_stringnew(2 + spec->prec)))
+			return (NULL);
 		temp[0] = '0';
 		temp[1] = 'x';
 	}
 	else
-		temp = ft_stringnew(spec->prec - spec->len);
-	spec->len = ft_strlen(str);
-	if (spec->prec < spec->len)
 	{
-		if (spec->is_sharp)
-		{
-			if (!(str = ft_strjoin(temp, str, 3)))
-				return (NULL);
-		}
-		if (spec->is_majhexa)
-			ft_strcapitalize(str);
-		return (str);
+		if (!(temp = ft_stringnew(spec->prec)))
+			return (NULL);
 	}
-	else
-		str = apply_longprec_for_hexa(str, hexa, temp, spec);
+	spec->len = ft_strlen(str);
+	str = apply_longprec_for_hexa(str, hexa, temp, spec);
 	return (str);
 }
 
 char	*apply_width_for_hexa(char *str, int hexa, t_spec *spec)
 {
+	//dprintf(1, "SO LEN 1: %d\n", spec->is_zero);
 	if (spec->is_sharp && hexa != 0)
 	{
 		if (spec->is_majhexa)
@@ -75,10 +80,10 @@ char	*apply_width_for_hexa(char *str, int hexa, t_spec *spec)
 			spec->count += write(1, "0x", 2);
 		while (spec->diff++ < spec->width - spec->len - 2)
 			spec->count += write(1, "0", 1);
-		return (str);
 	}
-	while (spec->diff++ < spec->width - spec->len)
-		spec->count += write(1, "0", 1);
+	else
+		while (spec->diff++ < spec->width - spec->len)
+			spec->count += write(1, "0", 1);
 	return (str);
 }
 
@@ -98,12 +103,18 @@ char	*apply_longwidth_for_hexa(char *str, int hexa, t_spec *spec)
 			spec->count += write(1, "0x", 2);
 	}
 	else
-		while (indic++ < spec->width - spec->len)
-			spec->count += write(1, " ", 1);
+	{
+		if (spec->is_zero && spec->is_star && spec->prec < 0)
+			while (indic++ < spec->width - spec->len)
+				spec->count += write(1, "0", 1);
+		else
+			while (indic++ < spec->width - spec->len)
+				spec->count += write(1, " ", 1);
+	}
 	return (str);
 }
 
-void	check_width_for_hexa(char *str, int hexa, t_spec *spec)
+char	*check_width_for_hexa(char *str, int hexa, t_spec *spec)
 {
 	spec->len = ft_strlen(str);
 	if (spec->is_minus)
@@ -124,4 +135,5 @@ void	check_width_for_hexa(char *str, int hexa, t_spec *spec)
 		str = apply_longwidth_for_hexa(str, hexa, spec);
 	if (!spec->is_minus)
 		spec->count += write(1, str, ft_strlen(str));
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/15 01:42:14 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/31 03:41:00 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,12 @@ int		ft_parsing(va_list elem, const char *format)
 	i = 0;
 	while (format[i])
 	{
-		if (format[i] == '%')
+		if (format[i] == '%' && format[i + 1] != '\0')
 			ret += read_spec(elem, format, &i);
 		else
 		{
+			if (format[i] == '%' && format[i + 1] == '\0')
+				return (ret);
 			write(1, &format[i], 1);
 			ret++;
 		}

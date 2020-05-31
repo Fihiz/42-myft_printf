@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:36:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/26 17:59:23 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/31 07:27:53 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,24 +40,39 @@ void	apply_width_for_str(char *str, t_spec *spec)
 int		ft_convert_str(va_list elem, t_spec *spec)
 {
 	char	*str;
-	int		check;
 
-	check = 0;
 	if (!(str = va_arg(elem, char*)))
 		str = "(null)";
-	if (spec->is_prec && spec->prec >= 0)
+	if (spec->is_prec && !spec->prec)
+		str = "";
+	if (spec->is_prec && spec->prec > 0)
 	{
-		if (!(str = ft_substr(str, 0, spec->prec)))
+		if (!(str = ft_substr(str, 0, spec->prec, 0)))
 			return (0);
-		check = 1;
+		spec->check = 1;
 	}
 	if (spec->width)
 		apply_width_for_str(str, spec);
 	else
 		spec->count += write(1, str, ft_strlen(str));
-	if (check == 1)
-		free(str);
+	if (spec->check == 1)
+		ft_strdel(&str);
 	return (1);
+}
+
+void	apply_width_for_char(char c, t_spec *spec)
+{
+	if (spec->is_zero)
+	{
+		while (spec->diff++ < spec->width - 1)
+			spec->count += write(1, "0", 1);
+	}
+	else
+	{
+		while (++spec->diff < spec->width)
+			spec->count += write(1, " ", 1);
+	}
+	spec->count += write(1, &c, 1);
 }
 
 void	ft_convert_char(va_list elem, t_spec *spec)
@@ -79,11 +94,7 @@ void	ft_convert_char(va_list elem, t_spec *spec)
 				spec->count += write(1, " ", 1);
 		}
 		if (!spec->is_minus)
-		{
-			while (++spec->diff < spec->width)
-				spec->count += write(1, " ", 1);
-			spec->count += write(1, &c, 1);
-		}
+			apply_width_for_char(c, spec);
 	}
 	else
 		spec->count += write(1, &c, 1);

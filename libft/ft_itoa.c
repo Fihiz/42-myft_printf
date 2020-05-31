@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:57:59 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/04/25 20:54:51 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/05/26 23:03:30 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static	void	ft_charchar(char *dest, char c)
 
 	i = ft_strlen(dest);
 	dest[i] = c;
-	dest[i + 1] = 0;
+	dest[i + 1] = '\0';
 }
 
 static	void	ft_putnbr(char *dest, long int n)
