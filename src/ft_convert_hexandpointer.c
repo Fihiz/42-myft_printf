@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/31 19:46:15 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/06/01 01:33:12 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ char	*apply_flags_pointer(char *str, char *lol, int *point, t_spec *spec)
 		str = apply_convert_pointer(str, point, spec);
 	else
 	{
-		if ((spec->is_star && !spec->width && !spec->is_prec) 
+		if ((spec->is_star && !spec->width && !spec->is_prec)
 			|| (spec->is_zero && !spec->width))
 		{
 			ft_strdel(&str);
@@ -84,7 +84,7 @@ char	*apply_flags_pointer(char *str, char *lol, int *point, t_spec *spec)
 
 char	*check_for_pointer(char *str, char *lol, int *point, t_spec *spec)
 {
-	if (point == 0 /*&& !spec->width*/)
+	if (point == 0)
 	{
 		spec->check = 1;
 		if (spec->is_prec && spec->prec == 0)
@@ -128,8 +128,10 @@ int		ft_convert_pointer(va_list elem, t_spec *spec)
 		str[1] = lol[1];
 	}
 	else
+	{
 		if (!(str = ft_ultoa_base((unsigned long long)point, 16)))
 			return (0);
+	}
 	str = apply_flags_pointer(str, lol, point, spec);
 	ft_strdel(&lol);
 	ft_strdel(&str);

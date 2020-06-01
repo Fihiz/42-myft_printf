@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:36:09 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/31 07:27:53 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/06/01 01:15:56 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	apply_width_for_str(char *str, t_spec *spec)
 	{
 		if (spec->is_minus)
 			spec->count += write(1, str, ft_strlen(str));
-		if (spec->is_zero && !spec->is_minus)
+		if (spec->is_zero && !spec->is_minus && spec->len > 0)
 			while (spec->diff++ < spec->width - spec->len)
 				spec->count += write(1, "0", 1);
 		else

@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/20 15:56:40 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/31 07:49:21 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/06/01 01:41:43 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,10 @@ char	*apply_longwidth_for_pointer(char *str, t_spec *spec)
 
 	indic = 0;
 	if (spec->is_star && !spec->is_minus && !spec->is_prec)
-	{
-		//if (!spec->is_star)
-		//spec->count += write(1, "0x", 2);
 		spec->width -= 2;
-		//dprintf(1, "donc ENFIN : %d\n", spec->is_minus);
-	}
 	if (spec->is_zero && spec->is_star && spec->prec < 0)
-			while (spec->indic++ < spec->width - spec->len)
-				spec->count += write(1, "0", 1);
+		while (spec->indic++ < spec->width - spec->len)
+			spec->count += write(1, "0", 1);
 	else
 	{
 		while (indic++ < spec->width - spec->len)

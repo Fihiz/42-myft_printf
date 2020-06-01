@@ -6,7 +6,7 @@
 /*   By: sad-aude <sad-aude@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 19:35:55 by sad-aude          #+#    #+#             */
-/*   Updated: 2020/05/31 19:32:04 by sad-aude         ###   ########lyon.fr   */
+/*   Updated: 2020/06/01 01:38:49 by sad-aude         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ char	*apply_prec_for_hexa(char *str, int hexa, t_spec *spec)
 
 char	*apply_width_for_hexa(char *str, int hexa, t_spec *spec)
 {
-	//dprintf(1, "SO LEN 1: %d\n", spec->is_zero);
 	if (spec->is_sharp && hexa != 0)
 	{
 		if (spec->is_majhexa)

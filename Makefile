@@ -13,7 +13,7 @@
 
 NAME = libftprintf.a
 
-SRCS = src/ft_printf.c \
+SRCS =  ft_printf.c \
 		src/ft_spec.c \
 		src/ft_convert_characters.c \
 		src/ft_convert_int.c \
